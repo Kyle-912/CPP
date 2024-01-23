@@ -15,7 +15,7 @@ int BinaryToDecimal(string binary);
 int main()
 {
     cout << "Kyle Thompson" << endl;
-    
+
     for (int run = 0; run < 54; run++)
     {
         // User-set values
@@ -24,320 +24,319 @@ int main()
         int memoryAddressSizeBits = 32;
 
         // Set per run
-        string associativity = ""; // direct | set | fully
+        string associativity = "";     // direct | set | fully
         string replacementPolicy = ""; // FIFO | LRU
         int cacheSizeByte = 0;
         int n_way = 1; // only used if associativity is "set"
         switch (run)
         {
-            case 0:
-                associativity = "direct";
-                cacheSizeByte = 512;
-                break;
-            case 1:
-                associativity = "direct";
-                cacheSizeByte = 1024;
-                break;
-            case 2:
-                associativity = "direct";
-                cacheSizeByte = 2048;
-                break;
-            case 3:
-                associativity = "direct";
-                cacheSizeByte = 4096;
-                break;
-            case 4:
-                associativity = "direct";
-                cacheSizeByte = 8192;
-                break;
-            case 5:
-                associativity = "direct";
-                cacheSizeByte = 16384;
-                break;
-            case 6:
-                associativity = "fully";
-                replacementPolicy = "FIFO";
-                cacheSizeByte = 512;
-                break;
-            case 7:
-                associativity = "fully";
-                replacementPolicy = "FIFO";
-                cacheSizeByte = 1024;
-                break;
-            case 8:
-                associativity = "fully";
-                replacementPolicy = "FIFO";
-                cacheSizeByte = 2048;
-                break;
-            case 9:
-                associativity = "fully";
-                replacementPolicy = "FIFO";
-                cacheSizeByte = 4096;
-                break;
-            case 10:
-                associativity = "fully";
-                replacementPolicy = "FIFO";
-                cacheSizeByte = 8192;
-                break;
-            case 11:
-                associativity = "fully";
-                replacementPolicy = "FIFO";
-                cacheSizeByte = 16384;
-                break;
-            case 12:
-                associativity = "fully";
-                replacementPolicy = "LRU";
-                cacheSizeByte = 512;
-                break;
-            case 13:
-                associativity = "fully";
-                replacementPolicy = "LRU";
-                cacheSizeByte = 1024;
-                break;
-            case 14:
-                associativity = "fully";
-                replacementPolicy = "LRU";
-                cacheSizeByte = 2048;
-                break;
-            case 15:
-                associativity = "fully";
-                replacementPolicy = "LRU";
-                cacheSizeByte = 4096;
-                break;
-            case 16:
-                associativity = "fully";
-                replacementPolicy = "LRU";
-                cacheSizeByte = 8192;
-                break;
-            case 17:
-                associativity = "fully";
-                replacementPolicy = "LRU";
-                cacheSizeByte = 16384;
-                break;
-            case 18:
-                associativity = "set";
-                replacementPolicy = "FIFO";
-                cacheSizeByte = 512;
-                n_way = 2;
-                break;
-            case 19:
-                associativity = "set";
-                replacementPolicy = "FIFO";
-                cacheSizeByte = 1024;
-                n_way = 2;
-                break;
-            case 20:
-                associativity = "set";
-                replacementPolicy = "FIFO";
-                cacheSizeByte = 2048;
-                n_way = 2;
-                break;
-            case 21:
-                associativity = "set";
-                replacementPolicy = "FIFO";
-                cacheSizeByte = 4096;
-                n_way = 2;
-                break;
-            case 22:
-                associativity = "set";
-                replacementPolicy = "FIFO";
-                cacheSizeByte = 8192;
-                n_way = 2;
-                break;
-            case 23:
-                associativity = "set";
-                replacementPolicy = "FIFO";
-                cacheSizeByte = 16384;
-                n_way = 2;
-                break;
-            case 24:
-                associativity = "set";
-                replacementPolicy = "LRU";
-                cacheSizeByte = 512;
-                n_way = 2;
-                break;
-            case 25:
-                associativity = "set";
-                replacementPolicy = "LRU";
-                cacheSizeByte = 1024;
-                n_way = 2;
-                break;
-            case 26:
-                associativity = "set";
-                replacementPolicy = "LRU";
-                cacheSizeByte = 2048;
-                n_way = 2;
-                break;
-            case 27:
-                associativity = "set";
-                replacementPolicy = "LRU";
-                cacheSizeByte = 4096;
-                n_way = 2;
-                break;
-            case 28:
-                associativity = "set";
-                replacementPolicy = "LRU";
-                cacheSizeByte = 8192;
-                n_way = 2;
-                break;
-            case 29:
-                associativity = "set";
-                replacementPolicy = "LRU";
-                cacheSizeByte = 16384;
-                n_way = 2;
-                break;
-            case 30:
-                associativity = "set";
-                replacementPolicy = "FIFO";
-                cacheSizeByte = 512;
-                n_way = 4;
-                break;
-            case 31:
-                associativity = "set";
-                replacementPolicy = "FIFO";
-                cacheSizeByte = 1024;
-                n_way = 4;
-                break;
-            case 32:
-                associativity = "set";
-                replacementPolicy = "FIFO";
-                cacheSizeByte = 2048;
-                n_way = 4;
-                break;
-            case 33:
-                associativity = "set";
-                replacementPolicy = "FIFO";
-                cacheSizeByte = 4096;
-                n_way = 4;
-                break;
-            case 34:
-                associativity = "set";
-                replacementPolicy = "FIFO";
-                cacheSizeByte = 8192;
-                n_way = 4;
-                break;
-            case 35:
-                associativity = "set";
-                replacementPolicy = "FIFO";
-                cacheSizeByte = 16384;
-                n_way = 4;
-                break;
-            case 36:
-                associativity = "set";
-                replacementPolicy = "LRU";
-                cacheSizeByte = 512;
-                n_way = 4;
-                break;
-            case 37:
-                associativity = "set";
-                replacementPolicy = "LRU";
-                cacheSizeByte = 1024;
-                n_way = 4;
-                break;
-            case 38:
-                associativity = "set";
-                replacementPolicy = "LRU";
-                cacheSizeByte = 2048;
-                n_way = 4;
-                break;
-            case 39:
-                associativity = "set";
-                replacementPolicy = "LRU";
-                cacheSizeByte = 4096;
-                n_way = 4;
-                break;
-            case 40:
-                associativity = "set";
-                replacementPolicy = "LRU";
-                cacheSizeByte = 8192;
-                n_way = 4;
-                break;
-            case 41:
-                associativity = "set";
-                replacementPolicy = "LRU";
-                cacheSizeByte = 16384;
-                n_way = 4;
-                break;
-            case 42:
-                associativity = "set";
-                replacementPolicy = "FIFO";
-                cacheSizeByte = 512;
-                n_way = 8;
-                break;
-            case 43:
-                associativity = "set";
-                replacementPolicy = "FIFO";
-                cacheSizeByte = 1024;
-                n_way = 8;
-                break;
-            case 44:
-                associativity = "set";
-                replacementPolicy = "FIFO";
-                cacheSizeByte = 2048;
-                n_way = 8;
-                break;
-            case 45:
-                associativity = "set";
-                replacementPolicy = "FIFO";
-                cacheSizeByte = 4096;
-                n_way = 8;
-                break;
-            case 46:
-                associativity = "set";
-                replacementPolicy = "FIFO";
-                cacheSizeByte = 8192;
-                n_way = 8;
-                break;
-            case 47:
-                associativity = "set";
-                replacementPolicy = "FIFO";
-                cacheSizeByte = 16384;
-                n_way = 8;
-                break;
-            case 48:
-                associativity = "set";
-                replacementPolicy = "LRU";
-                cacheSizeByte = 512;
-                n_way = 8;
-                break;
-            case 49:
-                associativity = "set";
-                replacementPolicy = "LRU";
-                cacheSizeByte = 1024;
-                n_way = 8;
-                break;
-            case 50:
-                associativity = "set";
-                replacementPolicy = "LRU";
-                cacheSizeByte = 2048;
-                n_way = 8;
-                break;
-            case 51:
-                associativity = "set";
-                replacementPolicy = "LRU";
-                cacheSizeByte = 4096;
-                n_way = 8;
-                break;
-            case 52:
-                associativity = "set";
-                replacementPolicy = "LRU";
-                cacheSizeByte = 8192;
-                n_way = 8;
-                break;
-            case 53:
-                associativity = "set";
-                replacementPolicy = "LRU";
-                cacheSizeByte = 16384;
-                n_way = 8;
-                break;
-            default:
-                break;
+        case 0:
+            associativity = "direct";
+            cacheSizeByte = 512;
+            break;
+        case 1:
+            associativity = "direct";
+            cacheSizeByte = 1024;
+            break;
+        case 2:
+            associativity = "direct";
+            cacheSizeByte = 2048;
+            break;
+        case 3:
+            associativity = "direct";
+            cacheSizeByte = 4096;
+            break;
+        case 4:
+            associativity = "direct";
+            cacheSizeByte = 8192;
+            break;
+        case 5:
+            associativity = "direct";
+            cacheSizeByte = 16384;
+            break;
+        case 6:
+            associativity = "fully";
+            replacementPolicy = "FIFO";
+            cacheSizeByte = 512;
+            break;
+        case 7:
+            associativity = "fully";
+            replacementPolicy = "FIFO";
+            cacheSizeByte = 1024;
+            break;
+        case 8:
+            associativity = "fully";
+            replacementPolicy = "FIFO";
+            cacheSizeByte = 2048;
+            break;
+        case 9:
+            associativity = "fully";
+            replacementPolicy = "FIFO";
+            cacheSizeByte = 4096;
+            break;
+        case 10:
+            associativity = "fully";
+            replacementPolicy = "FIFO";
+            cacheSizeByte = 8192;
+            break;
+        case 11:
+            associativity = "fully";
+            replacementPolicy = "FIFO";
+            cacheSizeByte = 16384;
+            break;
+        case 12:
+            associativity = "fully";
+            replacementPolicy = "LRU";
+            cacheSizeByte = 512;
+            break;
+        case 13:
+            associativity = "fully";
+            replacementPolicy = "LRU";
+            cacheSizeByte = 1024;
+            break;
+        case 14:
+            associativity = "fully";
+            replacementPolicy = "LRU";
+            cacheSizeByte = 2048;
+            break;
+        case 15:
+            associativity = "fully";
+            replacementPolicy = "LRU";
+            cacheSizeByte = 4096;
+            break;
+        case 16:
+            associativity = "fully";
+            replacementPolicy = "LRU";
+            cacheSizeByte = 8192;
+            break;
+        case 17:
+            associativity = "fully";
+            replacementPolicy = "LRU";
+            cacheSizeByte = 16384;
+            break;
+        case 18:
+            associativity = "set";
+            replacementPolicy = "FIFO";
+            cacheSizeByte = 512;
+            n_way = 2;
+            break;
+        case 19:
+            associativity = "set";
+            replacementPolicy = "FIFO";
+            cacheSizeByte = 1024;
+            n_way = 2;
+            break;
+        case 20:
+            associativity = "set";
+            replacementPolicy = "FIFO";
+            cacheSizeByte = 2048;
+            n_way = 2;
+            break;
+        case 21:
+            associativity = "set";
+            replacementPolicy = "FIFO";
+            cacheSizeByte = 4096;
+            n_way = 2;
+            break;
+        case 22:
+            associativity = "set";
+            replacementPolicy = "FIFO";
+            cacheSizeByte = 8192;
+            n_way = 2;
+            break;
+        case 23:
+            associativity = "set";
+            replacementPolicy = "FIFO";
+            cacheSizeByte = 16384;
+            n_way = 2;
+            break;
+        case 24:
+            associativity = "set";
+            replacementPolicy = "LRU";
+            cacheSizeByte = 512;
+            n_way = 2;
+            break;
+        case 25:
+            associativity = "set";
+            replacementPolicy = "LRU";
+            cacheSizeByte = 1024;
+            n_way = 2;
+            break;
+        case 26:
+            associativity = "set";
+            replacementPolicy = "LRU";
+            cacheSizeByte = 2048;
+            n_way = 2;
+            break;
+        case 27:
+            associativity = "set";
+            replacementPolicy = "LRU";
+            cacheSizeByte = 4096;
+            n_way = 2;
+            break;
+        case 28:
+            associativity = "set";
+            replacementPolicy = "LRU";
+            cacheSizeByte = 8192;
+            n_way = 2;
+            break;
+        case 29:
+            associativity = "set";
+            replacementPolicy = "LRU";
+            cacheSizeByte = 16384;
+            n_way = 2;
+            break;
+        case 30:
+            associativity = "set";
+            replacementPolicy = "FIFO";
+            cacheSizeByte = 512;
+            n_way = 4;
+            break;
+        case 31:
+            associativity = "set";
+            replacementPolicy = "FIFO";
+            cacheSizeByte = 1024;
+            n_way = 4;
+            break;
+        case 32:
+            associativity = "set";
+            replacementPolicy = "FIFO";
+            cacheSizeByte = 2048;
+            n_way = 4;
+            break;
+        case 33:
+            associativity = "set";
+            replacementPolicy = "FIFO";
+            cacheSizeByte = 4096;
+            n_way = 4;
+            break;
+        case 34:
+            associativity = "set";
+            replacementPolicy = "FIFO";
+            cacheSizeByte = 8192;
+            n_way = 4;
+            break;
+        case 35:
+            associativity = "set";
+            replacementPolicy = "FIFO";
+            cacheSizeByte = 16384;
+            n_way = 4;
+            break;
+        case 36:
+            associativity = "set";
+            replacementPolicy = "LRU";
+            cacheSizeByte = 512;
+            n_way = 4;
+            break;
+        case 37:
+            associativity = "set";
+            replacementPolicy = "LRU";
+            cacheSizeByte = 1024;
+            n_way = 4;
+            break;
+        case 38:
+            associativity = "set";
+            replacementPolicy = "LRU";
+            cacheSizeByte = 2048;
+            n_way = 4;
+            break;
+        case 39:
+            associativity = "set";
+            replacementPolicy = "LRU";
+            cacheSizeByte = 4096;
+            n_way = 4;
+            break;
+        case 40:
+            associativity = "set";
+            replacementPolicy = "LRU";
+            cacheSizeByte = 8192;
+            n_way = 4;
+            break;
+        case 41:
+            associativity = "set";
+            replacementPolicy = "LRU";
+            cacheSizeByte = 16384;
+            n_way = 4;
+            break;
+        case 42:
+            associativity = "set";
+            replacementPolicy = "FIFO";
+            cacheSizeByte = 512;
+            n_way = 8;
+            break;
+        case 43:
+            associativity = "set";
+            replacementPolicy = "FIFO";
+            cacheSizeByte = 1024;
+            n_way = 8;
+            break;
+        case 44:
+            associativity = "set";
+            replacementPolicy = "FIFO";
+            cacheSizeByte = 2048;
+            n_way = 8;
+            break;
+        case 45:
+            associativity = "set";
+            replacementPolicy = "FIFO";
+            cacheSizeByte = 4096;
+            n_way = 8;
+            break;
+        case 46:
+            associativity = "set";
+            replacementPolicy = "FIFO";
+            cacheSizeByte = 8192;
+            n_way = 8;
+            break;
+        case 47:
+            associativity = "set";
+            replacementPolicy = "FIFO";
+            cacheSizeByte = 16384;
+            n_way = 8;
+            break;
+        case 48:
+            associativity = "set";
+            replacementPolicy = "LRU";
+            cacheSizeByte = 512;
+            n_way = 8;
+            break;
+        case 49:
+            associativity = "set";
+            replacementPolicy = "LRU";
+            cacheSizeByte = 1024;
+            n_way = 8;
+            break;
+        case 50:
+            associativity = "set";
+            replacementPolicy = "LRU";
+            cacheSizeByte = 2048;
+            n_way = 8;
+            break;
+        case 51:
+            associativity = "set";
+            replacementPolicy = "LRU";
+            cacheSizeByte = 4096;
+            n_way = 8;
+            break;
+        case 52:
+            associativity = "set";
+            replacementPolicy = "LRU";
+            cacheSizeByte = 8192;
+            n_way = 8;
+            break;
+        case 53:
+            associativity = "set";
+            replacementPolicy = "LRU";
+            cacheSizeByte = 16384;
+            n_way = 8;
+            break;
+        default:
+            break;
         }
 
-
         // Size calculations
-        int numLines = cacheSizeByte/block_lineSizeByte;
-        int numSets = cacheSizeByte/(block_lineSizeByte * n_way);
+        int numLines = cacheSizeByte / block_lineSizeByte;
+        int numSets = cacheSizeByte / (block_lineSizeByte * n_way);
         int offsetSizeBits = log2(block_lineSizeByte);
 
         int set_lineSizeBits = 0;
@@ -368,21 +367,21 @@ int main()
         {
             for (int i = 0; i < numLines; i++)
             {
-               cache.push_back({i, 0, 0});
+                cache.push_back({i, 0, 0});
             }
-        } 
+        }
         else if (associativity == "set")
         {
             for (int i = 0; i < numLines; i++)
             {
-               cache.push_back({i/2, 0, 0});
+                cache.push_back({i / 2, 0, 0});
             }
         }
         else if (associativity == "fully")
         {
             for (int i = 0; i < numLines; i++)
             {
-               cache.push_back({0, 0, 0});
+                cache.push_back({0, 0, 0});
             }
         }
 
@@ -425,7 +424,7 @@ int main()
                         hitCounter += 1;
                         miss = false;
                         break;
-                    }        
+                    }
                     else // miss
                     {
                         if (associativity == "direct")
@@ -463,7 +462,7 @@ int main()
                         }
                     }
                 }
-                else if (replacementPolicy == "LRU") //replace item with smallest counter
+                else if (replacementPolicy == "LRU") // replace item with smallest counter
                 {
                     int indexToReplace = 0;
                     int valueToBeat = INT_MAX;
@@ -480,14 +479,14 @@ int main()
                     }
                     cache[indexToReplace][1] = tag;
                     cache[indexToReplace][2] = 1;
-                }   
+                }
                 else
                 {
                     cout << "Invalid replacement policy" << endl;
-                }                           
+                }
             }
         }
-        cout << "Hit Rate for " << associativity << " " << replacementPolicy << " with a cache size of " << cacheSizeByte << " bytes is: " << hitCounter/addresses.size() << endl;
+        cout << "Hit Rate for " << associativity << " " << replacementPolicy << " with a cache size of " << cacheSizeByte << " bytes is: " << hitCounter / addresses.size() << endl;
     }
     return 0;
 }
@@ -511,7 +510,7 @@ vector<string> ReadFile(string fileName)
             {
                 break;
             }
-            
+
             istringstream instructionStream(instruction);
             getline(instructionStream, loadOrStore, ' ');
             getline(instructionStream, removePrefix, 'x');
@@ -521,9 +520,10 @@ vector<string> ReadFile(string fileName)
             addresses.push_back(address);
         }
     }
-    else {
-		cout << "File could not open" << endl;
-	}
+    else
+    {
+        cout << "File could not open" << endl;
+    }
 
     return addresses;
 }
@@ -604,7 +604,7 @@ vector<string> HexToBinary(vector<string> addressesHex)
             else
             {
                 cout << "Invalid character in address" << endl;
-            }            
+            }
         }
         addressesBinary.push_back(addressBinary);
     }
@@ -616,15 +616,15 @@ int BinaryToDecimal(string binary)
 {
     int decimal = 0;
 
-	int indexCounter = 0; 
-	for(int i = binary.length()-1; i >= 0; i--) 
-	{ 
-        if(binary [i] == '1') 
-	    { 
-            decimal += pow(2, indexCounter); 
-    	} 
-        indexCounter++; 
-	}
+    int indexCounter = 0;
+    for (int i = binary.length() - 1; i >= 0; i--)
+    {
+        if (binary[i] == '1')
+        {
+            decimal += pow(2, indexCounter);
+        }
+        indexCounter++;
+    }
 
     return decimal;
 }
