@@ -227,7 +227,6 @@ int main()
             else if (AIB[0] == "OR")
             {
                 resultNum = stoi(AIB[2]) | stoi(AIB[3]);
-                ;
             }
 
             vector<string> result;
