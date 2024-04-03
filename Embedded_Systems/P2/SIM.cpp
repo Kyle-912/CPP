@@ -69,7 +69,7 @@ void decompression()
 
             if (isDictionary)
             {
-                instructions.push_back(line);
+                dictionary.push_back(line);
             }
             else
             {
