@@ -79,7 +79,7 @@ void compression()
             int consecutiveMismatchCount = 0;
             int totalMismatchCount = 0;
             size_t mismatchStartIndex = 0;
-            string mismatchEncoding;
+            string mismatchEncoding = "";
 
             for (size_t k = 0; k < instr.size(); ++k)
             {
