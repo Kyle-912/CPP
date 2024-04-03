@@ -115,22 +115,9 @@ void compression()
                 compressed += bitset<4>(j).to_string();
                 instructions[i] = compressed;
                 mismatchFound = true;
-                instructionMatched = true;
                 break;
             }
         }
-
-        if (!instructionMatched)
-        {
-            cout << "nothing" << endl;
-            return;
-        }
-    }
-
-    if (!mismatchFound)
-    {
-        cout << "nothing" << endl;
-        return;
     }
 
     cout << "";
