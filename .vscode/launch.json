@@ -10,9 +10,7 @@
                 "1"
             ],
             "cwd": "${fileDirname}",
-            "preLaunchTask": "C/C++: g++.exe build active file",
-            "showDisplayString": true,
-            "visualizerFile": "${workspaceFolder}/MyCustom.natvis"
+            "preLaunchTask": "C/C++: g++.exe build active file"
         }
     ]
 }
