@@ -35,7 +35,6 @@ void compression()
 
     if (file.is_open())
     {
-        // Read the file line by line
         string row;
         while (getline(file, row))
         {
