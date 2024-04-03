@@ -56,11 +56,7 @@ void compression()
         dictionaryEntries.push_back(countStringPairs[i].second);
     }
 
-    cout << "Dictionary:" << endl;
-    for (const auto &r : dictionaryEntries)
-    {
-        cout << r << endl;
-    }
+
 }
 
 void decompression()
