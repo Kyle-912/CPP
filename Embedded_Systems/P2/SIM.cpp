@@ -72,10 +72,12 @@ void compression()
     for (size_t i = 0; i < instructions.size(); ++i)
     {
         string consecutiveMismatchEncoding = "";
+
         if (instructions[i].size() != 32)
         {
             continue; // Skip instructions that are not 32 bits
         }
+        
         const string &instr = instructions[i];
         for (size_t j = 0; j < dictionaryEntries.size(); ++j)
         {
