@@ -11,7 +11,7 @@ void compression();
 void decompression();
 
 vector<string> instructions;
-vector<string> dictionaary;
+vector<string> dictionary;
 
 int main(int argc, char *argv[])
 {
@@ -35,9 +35,6 @@ void compression()
 
     if (file.is_open())
     {
-        // Vector to store each row as a string
-
-
         // Read the file line by line
         string row;
         while (getline(file, row))
