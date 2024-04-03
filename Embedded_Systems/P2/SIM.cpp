@@ -130,7 +130,7 @@ void compression()
                         consecutiveMismatchEncoding += bitset<5>(longestMismatchStartIndex).to_string();
                         consecutiveMismatchEncoding += bitset<4>(j).to_string();
                     }
-                    consecutiveMismatchCount = 0; // Reset consecutive mismatch count
+                    consecutiveMismatchCount = 0;
                 }
             }
         }
