@@ -132,7 +132,6 @@ void compression()
                 else if (consecutiveMismatchCount == 3)
                 {
                     consecutiveMismatchEncoding = "";
-                    // break;
                 }
                 if (consecutiveMismatchEncoding.size() != 0 && consecutiveMismatchCount != 0)
                 {
