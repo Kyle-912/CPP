@@ -61,3 +61,8 @@ void compression(int selection)
         }
     }
 }
+
+void compression()
+{
+    
+}
