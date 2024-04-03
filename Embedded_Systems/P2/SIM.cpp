@@ -104,6 +104,7 @@ void compression()
                     ++totalMismatchCount;
                     if (consecutiveMismatchCount > 4 || totalMismatchCount != consecutiveMismatchCount)
                     {
+                        consecutiveMismatchEncoding = "011";
                         break;
                     }
                     if (consecutiveMismatchCount == 1)
