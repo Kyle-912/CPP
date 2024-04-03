@@ -35,16 +35,11 @@ void compression()
     {
         counts[instruction]++;
     }
-
     vector<pair<int, string>> countStringPairs;
-
-    // Populate the vector of pairs
     for (const auto &pair : counts)
     {
         countStringPairs.push_back(make_pair(pair.second, pair.first));
     }
-
-    // Sort the vector of pairs in descending order based on counts
     sort(countStringPairs.begin(), countStringPairs.end(), [&](const pair<int, string> &a, const pair<int, string> &b)
          {
         if (a.first != b.first) {
