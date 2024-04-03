@@ -49,7 +49,7 @@ void compression()
         dictionaryEntries.push_back(countsVector[i].second);
     }
 
-
+    
 
     cout << "";
 }
