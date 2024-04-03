@@ -56,7 +56,6 @@ void compression()
         dictionaryEntries.push_back(countStringPairs[i].second);
     }
 
-    // Output the top 16 strings
     cout << "Dictionary:" << endl;
     for (const auto &r : dictionaryEntries)
     {
