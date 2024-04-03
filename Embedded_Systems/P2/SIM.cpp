@@ -89,7 +89,7 @@ void compression()
             }
             for (size_t k = 0; k < instr.size(); ++k)
             {
-                if (k == 20)
+                if (k == 29)
                 {
                     cout << "";
                 }
