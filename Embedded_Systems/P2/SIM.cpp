@@ -136,6 +136,11 @@ void compression()
                         consecutiveMismatchEncoding += bitset<4>(j).to_string();
                     }
                     consecutiveMismatchCount = 0;
+                    if (k == 31)
+                    {
+                        /* code */
+                    }
+
                 }
             }
         }
