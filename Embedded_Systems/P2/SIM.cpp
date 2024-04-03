@@ -87,7 +87,7 @@ void compression()
                 {
                     ++currentMismatchCount;
                     ++consecutiveMismatchCount;
-                    if (currentMismatchCount > 4 || (k > 0 && instr[k - 1] != dict[k - 1])) //FIXME:
+                    if (currentMismatchCount > 4) //FIXME:
                     {
                         // Non-consecutive mismatch or more than 4 consecutive mismatches
                         break;
