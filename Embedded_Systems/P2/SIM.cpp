@@ -76,8 +76,8 @@ void compression()
             int mismatchCount = 0;
             int mismatchLocation = -1;
 
-            // if (instr.length() != dict.length())
-            //     continue; // Skip if lengths are different
+            if (instr.length() != dict.length())
+                continue;
 
             for (size_t k = 0; k < instr.length(); ++k)
             {
