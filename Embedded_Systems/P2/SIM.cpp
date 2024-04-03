@@ -67,7 +67,51 @@ void compression()
         }
     }
 
-    
+    for (size_t i = 0; i < instructions.size(); ++i)
+    {
+        for (size_t j = 0; j < dictionaryEntries.size(); ++j)
+        {
+            const string &instr = instructions[i];
+            const string &dict = dictionaryEntries[j];
+            int mismatchCount = 0;
+            int mismatchLocation = -1;
+
+            if (instr.length() != dict.length())
+                continue; // Skip if lengths are different
+
+            for (size_t k = 0; k < instr.length(); ++k)
+            {
+                if (instr[k] != dict[k])
+                {
+                    if (mismatchCount == 1)
+                    {
+                        mismatchLocation = -1; // More than 1 mismatch, skip
+                        break;
+                    }
+                    mismatchCount++;
+                    mismatchLocation = k;
+                }
+            }
+
+            if (mismatchCount == 1)
+            {
+                // Replace instruction with "011" + 5-bit representation of mismatch location + 4-bit representation of dictionary index
+                string indexRepresentation = "011";
+                // Add 5-bit representation of mismatch location
+                for (int k = 4; k >= 0; --k)
+                {
+                    indexRepresentation += ((mismatchLocation >> k) & 1) ? '1' : '0';
+                }
+                // Add 4-bit representation of dictionary index
+                for (int k = 3; k >= 0; --k)
+                {
+                    indexRepresentation += ((j >> k) & 1) ? '1' : '0';
+                }
+                instructions[i] = indexRepresentation;
+                break; // Move to the next instruction
+            }
+        }
+    }
 
     cout << "";
 }
