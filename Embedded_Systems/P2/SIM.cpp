@@ -83,40 +83,15 @@ void compression()
             if (instr.length() != dict.length())
                 continue; // Skip if lengths are different
 
-            bool consecutiveMismatch = false;
-
-            for (size_t k = 0; k < instr.length(); ++k)
-            {
-                if (instr[k] != dict[k])
-                {
-                    if (k + 1 < instr.length() && instr[k] == dict[k + 1] && instr[k + 1] == dict[k])
-                    {
-                        // Found two consecutive bit mismatches
-                        string compressed = "100";
-                        // Add 5-bit representation of mismatch index
-                        compressed += bitset<5>(k).to_string();
-                        // Add 4-bit representation of dictionary index
-                        compressed += bitset<4>(j).to_string();
-                        instructions[i] = compressed;
-                        mismatchFound = true;
-                        break;
-                    }
-                }
-            }
-
-            if (mismatchFound)
-                break;
-
+            // Check for consecutive mismatches
             for (size_t k = 0; k < instr.length() - 1; ++k)
             {
-                if (instr[k] != dict[k] && instr[k + 1] != dict[k + 1] && instr[k] == dict[k + 1] && instr[k + 1] == dict[k])
+                if (instr[k] != dict[k] && instr[k + 1] != dict[k + 1])
                 {
-                    // Found two bit mismatches anywhere
-                    string compressed = "110";
-                    // Add 5-bit representation of first mismatch index
+                    // Found two consecutive bit mismatches
+                    string compressed = "100";
+                    // Add 5-bit representation of mismatch index
                     compressed += bitset<5>(k).to_string();
-                    // Add 5-bit representation of second mismatch index
-                    compressed += bitset<5>(k + 1).to_string();
                     // Add 4-bit representation of dictionary index
                     compressed += bitset<4>(j).to_string();
                     instructions[i] = compressed;
@@ -128,6 +103,7 @@ void compression()
             if (mismatchFound)
                 break;
 
+            // Check for 4-bit consecutive mismatches
             for (size_t k = 0; k < instr.length() - 3; ++k)
             {
                 if (instr.substr(k, 4) != dict.substr(k, 4))
@@ -147,7 +123,41 @@ void compression()
             if (mismatchFound)
                 break;
 
-            // Check for a bitmask
+            // Check for 2-bit anywhere mismatches
+            int firstMismatch = -1;
+            int secondMismatch = -1;
+            for (size_t k = 0; k < instr.length(); ++k)
+            {
+                if (instr[k] != dict[k])
+                {
+                    if (firstMismatch == -1)
+                    {
+                        firstMismatch = k;
+                    }
+                    else
+                    {
+                        secondMismatch = k;
+                        break;
+                    }
+                }
+            }
+
+            if (secondMismatch != -1)
+            {
+                // Found two bit mismatches anywhere
+                string compressed = "110";
+                // Add 5-bit representation of first mismatch index
+                compressed += bitset<5>(firstMismatch).to_string();
+                // Add 5-bit representation of second mismatch index
+                compressed += bitset<5>(secondMismatch).to_string();
+                // Add 4-bit representation of dictionary index
+                compressed += bitset<4>(j).to_string();
+                instructions[i] = compressed;
+                mismatchFound = true;
+                break;
+            }
+
+            // Check for bitmask
             for (size_t k = 0; k < instr.length() - 3; ++k)
             {
                 string bitmask = instr.substr(k, 4);
