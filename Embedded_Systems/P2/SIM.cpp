@@ -50,15 +50,15 @@ void compression()
             return distance(instructions.begin(), indexA) < distance(instructions.begin(), indexB);
         } });
 
-    vector<string> top16Strings;
+    vector<string> dictionaryEntries;
     for (size_t i = 0; i < min<size_t>(16, countStringPairs.size()); ++i)
     {
-        top16Strings.push_back(countStringPairs[i].second);
+        dictionaryEntries.push_back(countStringPairs[i].second);
     }
 
     // Output the top 16 strings
     cout << "Dictionary:" << endl;
-    for (const auto &r : top16Strings)
+    for (const auto &r : dictionaryEntries)
     {
         cout << r << endl;
     }
