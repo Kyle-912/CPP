@@ -11,7 +11,7 @@ void compression();
 void decompression();
 
 vector<string> instructions;
-vector<string> dict;
+vector<string> dictionaary;
 
 int main(int argc, char *argv[])
 {
