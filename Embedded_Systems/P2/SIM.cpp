@@ -138,16 +138,15 @@ void compression()
                     consecutiveMismatchCount = 0;
                     if (k == 31)
                     {
-                        /* code */
+                        instructions[i] = consecutiveMismatchEncoding;
                     }
 
                 }
             }
         }
-        if (consecutiveMismatchEncoding.size() != 0)
-        {
-            instructions[i] = consecutiveMismatchEncoding;
-        }
+        // if (consecutiveMismatchEncoding.size() != 0)
+        // {
+        // }
     }
 
     cout << "";
