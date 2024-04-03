@@ -9,6 +9,7 @@
             "args": [
                 "1"
             ],
+            "cwd": "${workspaceFolder}", // Ensure this property is set correctly
             // Other configuration options...
         }
     ]
