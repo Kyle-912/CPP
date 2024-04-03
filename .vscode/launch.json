@@ -2,27 +2,14 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug SIM with Argument 1",
+            "name": "Debug with Argument 1",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/SIM",
+            "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
             "args": [
                 "1"
             ],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "gdb",
-            "miDebuggerPath": "/path/to/your/debugger",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                }
-            ],
-            // "preLaunchTask": "build"
+            // Other configuration options...
         }
     ]
 }
