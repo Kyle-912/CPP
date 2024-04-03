@@ -56,7 +56,7 @@ void compression()
             if (instructions[i] == dictionaryEntries[j])
             {
                 // Replace instruction with 4-bit representation of index
-                instructions[i] = to_string(j); // Assuming the index fits within 4 bits
+                instructions[i] = "111" + to_string(j); // Assuming the index fits within 4 bits
                 break;                          // Move to the next instruction
             }
         }
