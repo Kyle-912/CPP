@@ -63,17 +63,17 @@ void decompression()
         {
             if (line == "xxxx")
             {
-                isDictionary = true; // Set the flag to true after reading "xxxx"
-                continue;            
+                isDictionary = true;
+                continue;
             }
 
             if (isDictionary)
             {
-                instructions.push_back(line); // Store lines to the vector
+                instructions.push_back(line);
             }
             else
             {
-                compressedInstructions += line; // Concatenate lines before "xxxx"
+                compressedInstructions += line;
             }
         }
         file.close();
