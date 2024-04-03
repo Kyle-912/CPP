@@ -83,7 +83,33 @@ void compression()
             if (instr.length() != dict.length())
                 continue; // Skip if lengths are different
 
-            // Check for consecutive mismatches
+            // Check for 1-bit mismatch
+            int mismatchCount = 0;
+            int mismatchIndex = -1;
+            for (size_t k = 0; k < instr.length(); ++k)
+            {
+                if (instr[k] != dict[k])
+                {
+                    ++mismatchCount;
+                    if (mismatchIndex == -1)
+                        mismatchIndex = k;
+                }
+            }
+
+            if (mismatchCount == 1)
+            {
+                // Found a 1-bit mismatch
+                string compressed = "011";
+                // Add 5-bit representation of mismatch index
+                compressed += bitset<5>(mismatchIndex).to_string();
+                // Add 4-bit representation of dictionary index
+                compressed += bitset<4>(j).to_string();
+                instructions[i] = compressed;
+                mismatchFound = true;
+                break;
+            }
+
+            // Check for 2-bit consecutive mismatch
             for (size_t k = 0; k < instr.length() - 1; ++k)
             {
                 if (instr[k] != dict[k] && instr[k + 1] != dict[k + 1])
@@ -103,7 +129,7 @@ void compression()
             if (mismatchFound)
                 break;
 
-            // Check for 4-bit consecutive mismatches
+            // Check for 4-bit consecutive mismatch
             for (size_t k = 0; k < instr.length() - 3; ++k)
             {
                 if (instr.substr(k, 4) != dict.substr(k, 4))
