@@ -123,7 +123,6 @@ void compression()
                         }
                         else
                         {
-                            // More than four consecutive mismatches, handled as a bitmask
                             break;
                         }
 
