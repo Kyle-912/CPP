@@ -27,11 +27,11 @@ int main(int argc, char *argv[])
     }
     else if (option == 2)
     {
-        ifstream file("original.txt"); // Open the file for reading
+        ifstream file("compressed.txt"); // Open the file for reading
 
         if (file.is_open())
         {
-            cout << "Contents of original.txt:" << endl;
+            cout << "Contents of compressed.txt:" << endl;
             char c;
             while (file.get(c)) // Read the file character by character
             {
