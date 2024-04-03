@@ -130,17 +130,10 @@ void compression()
                         // Encode mismatch
                         consecutiveMismatchEncoding += bitset<5>(longestMismatchStartIndex).to_string();
                         consecutiveMismatchEncoding += bitset<4>(j).to_string();
-                        // break;
                     }
                     consecutiveMismatchCount = 0; // Reset consecutive mismatch count
                 }
             }
-            // if (totalMismatchCount <= 4)
-            // {
-            //     // Handle the case of a non-consecutive mismatch
-            //     // Continue checking for other dictionary entries
-            //     break;
-            // }
         }
 
         instructions[i] = consecutiveMismatchEncoding;
