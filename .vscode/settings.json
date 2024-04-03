@@ -1,6 +1,45 @@
 {
     "files.associations": {
         "vector": "cpp",
-        "xstring": "cpp"
-    }
+        "xstring": "cpp",
+        "ostream": "cpp",
+        "iostream": "cpp",
+        "fstream": "cpp"
+    },
+    "gitdoc.enabled": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        ".gitattributes": true,
+        ".gitignore": false,
+        ".vscode": false,
+        "**/.bash_history": false,
+        "**/.bash_logout": false,
+        "**/.bashrc": false,
+        "**/.cache": false,
+        "**/.config": false,
+        "**/.gitattributes": true,
+        "**/.gitconfig": false,
+        "**/.gitignore": false,
+        "**/.local": false,
+        "**/.motd_shown": false,
+        "**/.profile": false,
+        "**/.reptilian_profile": false,
+        "**/.rubberduck": false,
+        "**/.sudo_as_admin_successful": false,
+        "**/.vscode": false,
+        "**/.vscode-server": false,
+        "**/.vscode-upload.json": false,
+        "**/.wget-hsts": false,
+        "**/*.exe": false,
+        "**/desktop.ini": false,
+        "**/googletest": false,
+        "**/ieee": false,
+        "**/work": false
+    },
+    "explorerExclude.backup": {}
 }

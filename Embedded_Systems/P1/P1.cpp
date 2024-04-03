@@ -58,7 +58,7 @@ void printStep()
         for (auto it = INM.begin(); it != INM.end(); ++it)
         {
             outFile << "<" << (*it)[0] << "," << (*it)[1] << "," << (*it)[2] << "," << (*it)[3] << ">";
-            if (std::next(it) != INM.end())
+            if (next(it) != INM.end())
             {
                 outFile << ",";
             }
@@ -75,8 +75,7 @@ void printStep()
 
     if (!INB.empty())
     {
-        outFile << "<" << INB[0] << "," << INB[1] << "," << INB[2] << "," << INB[3] << ">"
-                << "\nAIB:";
+        outFile << "<" << INB[0] << "," << INB[1] << "," << INB[2] << "," << INB[3] << ">" << "\nAIB:";
     }
     else
     {
@@ -85,8 +84,7 @@ void printStep()
 
     if (!AIB.empty())
     {
-        outFile << "<" << AIB[0] << "," << AIB[1] << "," << AIB[2] << "," << AIB[3] << ">"
-                << "\nLIB:";
+        outFile << "<" << AIB[0] << "," << AIB[1] << "," << AIB[2] << "," << AIB[3] << ">" << "\nLIB:";
     }
     else
     {
@@ -95,8 +93,7 @@ void printStep()
 
     if (!LIB.empty())
     {
-        outFile << "<" << LIB[0] << "," << LIB[1] << "," << LIB[2] << "," << LIB[3] << ">"
-                << "\nADB:";
+        outFile << "<" << LIB[0] << "," << LIB[1] << "," << LIB[2] << "," << LIB[3] << ">" << "\nADB:";
     }
     else
     {
@@ -105,8 +102,7 @@ void printStep()
 
     if (!ADB.empty())
     {
-        outFile << "<" << ADB[0] << "," << ADB[1] << ">"
-                << "\nREB:";
+        outFile << "<" << ADB[0] << "," << ADB[1] << ">" << "\nREB:";
     }
     else
     {
@@ -118,7 +114,7 @@ void printStep()
         for (auto it = REB.begin(); it != REB.end(); ++it)
         {
             outFile << "<" << (*it)[0] << "," << (*it)[1] << ">";
-            if (std::next(it) != REB.end())
+            if (next(it) != REB.end())
             {
                 outFile << ",";
             }
@@ -136,7 +132,7 @@ void printStep()
     for (auto it = RGF.begin(); it != RGF.end(); ++it)
     {
         outFile << "<" << (*it)[0] << "," << (*it)[1] << ">";
-        if (std::next(it) != RGF.end())
+        if (next(it) != RGF.end())
         {
             outFile << ",";
         }
@@ -149,7 +145,7 @@ void printStep()
     for (auto it = DAM.begin(); it != DAM.end(); ++it)
     {
         outFile << "<" << (*it)[0] << "," << (*it)[1] << ">";
-        if (std::next(it) != DAM.end())
+        if (next(it) != DAM.end())
         {
             outFile << ",";
         }
