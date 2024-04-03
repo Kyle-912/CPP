@@ -181,7 +181,6 @@ void compression()
 
             if (mismatchCount == 2)
             {
-                // Encode two mismatches
                 encodedInstruction = "110";
                 encodedInstruction += bitset<5>(firstMismatchIndex).to_string();
                 encodedInstruction += bitset<5>(secondMismatchIndex).to_string();
