@@ -49,6 +49,7 @@ void compression()
         dictionaryEntries.push_back(countsVector[i].second);
     }
 
+    //Direct Matches
     for (size_t i = 0; i < instructions.size(); ++i)
     {
         for (size_t j = 0; j < dictionaryEntries.size(); ++j)
