@@ -56,12 +56,25 @@ void decompression()
 
     if (file.is_open())
     {
-        cout << "Contents of compressed.txt:" << endl;
-        char c;
-        while (file.get(c))
+        string line;
+        vector<string> compressedLines;
+
+        // Read lines until "xxxx" is encountered
+        while (getline(file, line))
         {
-            cout << c;
+            if (line == "xxxx")
+            {
+                break;
+            }
+            compressedLines.push_back(line);
         }
+
         file.close();
+
+        cout << "Contents of compressed.txt:" << endl;
+        for (const auto &r : compressedLines)
+        {
+            cout << r << endl;
+        }
     }
 }
