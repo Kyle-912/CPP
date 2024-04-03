@@ -196,7 +196,49 @@ void compression()
     }
 
     // Bitmask Handling
-    
+    for (size_t i = 0; i < instructions.size(); ++i)
+    {
+        const string &instr = instructions[i];
+        string encodedInstruction = "";
+
+        if (instr.size() != 32)
+        {
+            continue;
+        }
+
+        for (size_t j = 0; j < dictionaryEntries.size(); ++j)
+        {
+            const string &dict = dictionaryEntries[j];
+
+            // Check for bitmask compression
+            for (size_t start = 0; start <= 28; ++start)
+            {
+                int mask = 0;
+                for (size_t k = 0; k < 4; ++k)
+                {
+                    if (instr[start + k] != dict[start + k])
+                    {
+                        mask |= (1 << k);
+                    }
+                }
+                if ((mask & (~0)) == mask)
+                {
+                    // Found a valid bitmask
+                    encodedInstruction = "010";
+                    encodedInstruction += bitset<5>(start).to_string();
+                    encodedInstruction += bitset<4>(mask).to_string();
+                    encodedInstruction += bitset<4>(j).to_string();
+                    break;
+                }
+            }
+        }
+
+        // Replace instruction with encoded instruction
+        if (!encodedInstruction.empty())
+        {
+            instructions[i] = encodedInstruction;
+        }
+    }
 
     cout << "";
 }
