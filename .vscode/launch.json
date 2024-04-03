@@ -10,16 +10,7 @@
                 "1"
             ],
             "cwd": "${fileDirname}",
-        },
-        {
-            "name": "Debug with Argument 2",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
-            "args": [
-                "2"
-            ],
-            "cwd": "${fileDirname}",
         }
     ]
 }
+
