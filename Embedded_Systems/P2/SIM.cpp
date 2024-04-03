@@ -86,6 +86,7 @@ void compression()
                 if (instr[k] != dict[k])
                 {
                     ++currentMismatchCount;
+                    ++consecutiveMismatchCount;
                     if (currentMismatchCount > 4 || (k > 0 && instr[k - 1] != dict[k - 1])) //FIXME:
                     {
                         // Non-consecutive mismatch or more than 4 consecutive mismatches
@@ -96,7 +97,6 @@ void compression()
                         // Start of consecutive mismatches
                         longestMismatchStartIndex = k;
                     }
-                    ++consecutiveMismatchCount;
                 }
                 else if (consecutiveMismatchCount > 0)
                 {
