@@ -11,6 +11,15 @@ void readFile(int selection);
 int main(int argc, char *argv[])
 {
     int selection = atoi(argv[1]);
+    switch (selection)
+    {
+    case 1:
+        /* code */
+        break;
+    
+    default:
+        break;
+    }
     readFile(selection);
 
     return 0;
