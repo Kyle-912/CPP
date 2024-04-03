@@ -71,7 +71,7 @@ void compression()
     // Mismatches Handling
     for (size_t i = 0; i < instructions.size(); ++i)
     {
-            string consecutiveMismatchEncoding = "";
+        string consecutiveMismatchEncoding = "";
         if (instructions[i].size() != 32)
         {
             continue; // Skip instructions that are not 32 bits
