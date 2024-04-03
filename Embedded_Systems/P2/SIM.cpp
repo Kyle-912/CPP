@@ -89,7 +89,7 @@ void compression()
             }
             for (size_t k = 0; k < instr.size(); ++k)
             {
-                if (i == instructions.size() - 1)
+                if (i == instr.size() - 1)
                 {
                     cout << "";
                 }
