@@ -95,6 +95,7 @@ void compression()
                         consecutiveMismatchEncoding = "";
                         break;
                     }
+                    
                     if (consecutiveMismatchCount == 1)
                     {
                         mismatchStartIndex = k;
@@ -124,6 +125,7 @@ void compression()
                 {
                     consecutiveMismatchEncoding = "";
                 }
+
                 if (consecutiveMismatchEncoding.size() != 0 && consecutiveMismatchCount != 0)
                 {
                     consecutiveMismatchEncoding += bitset<5>(mismatchStartIndex).to_string();
