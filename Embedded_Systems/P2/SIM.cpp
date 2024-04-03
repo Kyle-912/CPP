@@ -83,7 +83,7 @@ void compression()
         {
             if (j == dictionaryEntries.size()-1)
             {
-                /* code */
+                cout << "";
             }
 
             const string &dict = dictionaryEntries[j];
