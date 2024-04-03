@@ -1,9 +1,18 @@
 {
     "version": "0.2.0",
     "configurations": [
-
         {
             "name": "Debug with Argument 1",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+            "args": [
+                "1"
+            ],
+            "cwd": "${fileDirname}",
+        },
+        {
+            "name": "Debug with Argument 2",
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
@@ -14,4 +23,3 @@
         }
     ]
 }
-
