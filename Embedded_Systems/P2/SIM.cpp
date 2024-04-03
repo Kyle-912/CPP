@@ -82,7 +82,7 @@ void compression()
             const string &dict = dictionaryEntries[j];
             int consecutiveMismatchCount = 0;
             int totalMismatchCount = 0;
-            size_t longestMismatchStartIndex = 0;
+            size_t mismatchStartIndex = 0;
             if (i == instructions.size() - 1 && j == 15)
             {
                 cout << "";
@@ -106,7 +106,7 @@ void compression()
                     }
                     if (consecutiveMismatchCount == 1)
                     {
-                        longestMismatchStartIndex = k;
+                        mismatchStartIndex = k;
                     }
                 }
                 else
@@ -136,7 +136,7 @@ void compression()
                 }
                 if (consecutiveMismatchEncoding.size() != 0 && consecutiveMismatchCount != 0)
                 {
-                    consecutiveMismatchEncoding += bitset<5>(longestMismatchStartIndex).to_string();
+                    consecutiveMismatchEncoding += bitset<5>(mismatchStartIndex).to_string();
                     consecutiveMismatchEncoding += bitset<4>(j).to_string();
                 }
 
