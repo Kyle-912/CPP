@@ -83,7 +83,7 @@ void compression()
             int consecutiveMismatchCount = 0;
             int totalMismatchCount = 0;
             size_t mismatchStartIndex = 0;
-            if (i == instructions.size() - 1 && j == 15)
+            if (i == instructions.size() - 1)
             {
                 cout << "";
             }
