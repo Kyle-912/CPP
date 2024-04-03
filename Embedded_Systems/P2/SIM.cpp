@@ -99,7 +99,6 @@ void compression()
                     }
                     if (consecutiveMismatchCount > 4 || totalMismatchCount != consecutiveMismatchCount)
                     {
-                        // Non-consecutive mismatch or more than 4 consecutive mismatches
                         break;
                     }
                 }
