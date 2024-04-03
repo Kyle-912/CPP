@@ -28,7 +28,7 @@ void compression()
         }
     }
 
-    
+
 }
 
 void decompression()
@@ -71,6 +71,8 @@ void decompression()
             cout << r << endl;
         }
     }
+
+    
 }
 
 int main(int argc, char *argv[])
