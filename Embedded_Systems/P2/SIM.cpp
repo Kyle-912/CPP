@@ -66,7 +66,6 @@ void decompression()
             }
             compressedInstructions += line;
         }
-
         file.close();
 
         cout << "Contents of compressed.txt:" << endl;
