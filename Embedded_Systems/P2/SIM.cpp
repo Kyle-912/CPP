@@ -81,6 +81,11 @@ void compression()
 
         for (size_t j = 0; j < dictionaryEntries.size(); ++j)
         {
+            if (j == dictionaryEntries.size()-1)
+            {
+                /* code */
+            }
+
             const string &dict = dictionaryEntries[j];
             int consecutiveMismatchCount = 0;
             int totalMismatchCount = 0;
