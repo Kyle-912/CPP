@@ -221,9 +221,9 @@ void compression()
                         mask |= (1 << k);
                     }
                 }
-                if ((mask & (~0)) == mask)
+                if ((mask & (~0)) == mask && (mask & (1 << 3)) != 0)
                 {
-                    // Found a valid bitmask
+                    // Found a valid bitmask with the first bit set to 1
                     encodedInstruction = "010";
                     encodedInstruction += bitset<5>(start).to_string();
                     encodedInstruction += bitset<4>(mask).to_string();
