@@ -32,13 +32,26 @@ void compression()
 
     if (file.is_open())
     {
-        cout << "Contents of original.txt:" << endl;
-        char c;
-        while (file.get(c))
+        // Vector to store each row as a string
+        vector<string> rows;
+
+        // Read the file line by line
+        string row;
+        while (getline(file, row))
         {
-            cout << c;
+            // Store the row in the vector
+            rows.push_back(row);
         }
+
+        // Close the file
         file.close();
+
+        // Print the contents of the vector
+        cout << "Contents of original.txt:" << endl;
+        for (const auto &r : rows)
+        {
+            cout << r << endl;
+        }
     }
 }
 
