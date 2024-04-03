@@ -50,7 +50,7 @@ void compression()
         dictionaryEntries.push_back(countsVector[i].second);
     }
 
-    //Direct Matches
+    // Direct Matches
     for (size_t i = 0; i < instructions.size(); ++i)
     {
         for (size_t j = 0; j < dictionaryEntries.size(); ++j)
@@ -70,10 +70,9 @@ void compression()
 
     for (size_t i = 0; i < instructions.size(); ++i)
     {
-        const string &instr = instructions[i];
-
         for (size_t j = 0; j < dictionaryEntries.size(); ++j)
         {
+            const string &instr = instructions[i];
             const string &dict = dictionaryEntries[j];
 
             // Your existing code for matching instructions with dictionary entries
