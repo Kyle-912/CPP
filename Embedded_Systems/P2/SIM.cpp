@@ -124,5 +124,5 @@ Heirarchy:
     2-bit mismatches anywhere - 14
 
 Compress with lowest indicy dictionary entry
-MSB = 0
+MSB = location 0
 */
