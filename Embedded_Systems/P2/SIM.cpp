@@ -28,7 +28,7 @@ void compression()
         }
     }
 
-
+    
 }
 
 void decompression()
@@ -72,7 +72,7 @@ void decompression()
         }
     }
 
-    
+
 }
 
 int main(int argc, char *argv[])
