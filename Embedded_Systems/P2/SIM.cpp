@@ -71,6 +71,7 @@ void compression()
     // Mismatches Handling
     for (size_t i = 0; i < instructions.size(); ++i)
     {
+            string consecutiveMismatchEncoding = "";
         if (instructions[i].size() != 32)
         {
             continue; // Skip instructions that are not 32 bits
@@ -82,7 +83,6 @@ void compression()
             int consecutiveMismatchCount = 0;
             int totalMismatchCount = 0;
             size_t longestMismatchStartIndex = 0;
-            string consecutiveMismatchEncoding = "";
 
             for (size_t k = 0; k < instr.size(); ++k)
             {
@@ -130,7 +130,6 @@ void compression()
                         // Encode mismatch
                         consecutiveMismatchEncoding += bitset<5>(longestMismatchStartIndex).to_string();
                         consecutiveMismatchEncoding += bitset<4>(j).to_string();
-                        instructions[i] = consecutiveMismatchEncoding;
                         break;
                     }
                     consecutiveMismatchCount = 0; // Reset consecutive mismatch count
@@ -143,6 +142,7 @@ void compression()
                 break;
             }
         }
+        instructions[i] = consecutiveMismatchEncoding;
     }
 
     cout << "";
