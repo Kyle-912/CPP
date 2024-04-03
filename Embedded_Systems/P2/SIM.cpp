@@ -86,14 +86,9 @@ void compression()
             int totalMismatchCount = 0;
             size_t longestMismatchStartIndex = 0;
 
-            if (j == dictionaryEntries.size() - 1)
-            {
-                cout << "";
-            }
-
             for (size_t k = 0; k < instr.size(); ++k)
             {
-                if (k == 8)
+                if (k == 8 )
                 {
                     cout << "";
                 }
