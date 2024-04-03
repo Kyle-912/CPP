@@ -97,13 +97,13 @@ void compression()
                 {
                     ++consecutiveMismatchCount;
                     ++totalMismatchCount;
-                    if (consecutiveMismatchCount == 1)
-                    {
-                        longestMismatchStartIndex = k;
-                    }
                     if (consecutiveMismatchCount > 4 || totalMismatchCount != consecutiveMismatchCount)
                     {
                         break;
+                    }
+                    if (consecutiveMismatchCount == 1)
+                    {
+                        longestMismatchStartIndex = k;
                     }
                 }
                 else
