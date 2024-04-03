@@ -7,9 +7,6 @@
 
 using namespace std;
 
-void compression();
-void decompression();
-
 vector<string> instructions;
 string compressedInstructions;
 vector<string> dictionary;
