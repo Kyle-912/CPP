@@ -7,26 +7,15 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    if (argc != 2)
-    {
-        cerr << "Usage: " << argv[0] << " <1|2>" << endl;
-        return 1;
-    }
-
-    int option = atoi(argv[1]);
+    int option = std::atoi(argv[1]);
 
     if (option == 1)
     {
-        cout << "Option 1 selected. Hello!" << endl;
+        std::cout << "Option 1 selected. Hello!" << std::endl;
     }
     else if (option == 2)
     {
-        cout << "Option 2 selected. World!" << endl;
-    }
-    else
-    {
-        cerr << "Invalid option. Please provide either 1 or 2." << endl;
-        return 1;
+        std::cout << "Option 2 selected. World!" << std::endl;
     }
 
     return 0;
