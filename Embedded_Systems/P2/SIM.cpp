@@ -74,7 +74,7 @@ void compression()
             const string &instr = instructions[i];
             const string &dict = dictionaryEntries[j];
             int mismatchCount = 0;
-            int mismatchLocation = -1;
+            int mismatchStart = -1;
 
             if (instr.length() != dict.length())
                 continue; // Skip if lengths are different
@@ -83,33 +83,36 @@ void compression()
             {
                 if (instr[k] != dict[k])
                 {
-                    if (mismatchCount == 1)
+                    if (mismatchCount == 0)
                     {
-                        mismatchLocation = -1; // More than 1 mismatch, skip
+                        mismatchStart = k; // Start of mismatch
+                        mismatchCount++;
+                    }
+                    else if (k == mismatchStart + 1)
+                    {
+                        // Check for 2 consecutive bit mismatches
+                        // Replace instruction with "100" + 5-bit representation of mismatch start + 4-bit representation of dictionary index
+                        string indexRepresentation = "100";
+                        // Add 5-bit representation of mismatch start
+                        for (int l = 4; l >= 0; --l)
+                        {
+                            indexRepresentation += ((mismatchStart >> l) & 1) ? '1' : '0';
+                        }
+                        // Add 4-bit representation of dictionary index
+                        for (int l = 3; l >= 0; --l)
+                        {
+                            indexRepresentation += ((j >> l) & 1) ? '1' : '0';
+                        }
+                        instructions[i] = indexRepresentation;
+                        break; // Move to the next instruction
+                    }
+                    else
+                    {
+                        // Reset mismatchCount and continue checking for consecutive mismatches
                         mismatchCount = 0;
                         break;
                     }
-                    mismatchCount++;
-                    mismatchLocation = k;
                 }
-            }
-
-            if (mismatchCount == 1)
-            {
-                // Replace instruction with "011" + 5-bit representation of mismatch location + 4-bit representation of dictionary index
-                string indexRepresentation = "011";
-                // Add 5-bit representation of mismatch location
-                for (int k = 4; k >= 0; --k)
-                {
-                    indexRepresentation += ((mismatchLocation >> k) & 1) ? '1' : '0';
-                }
-                // Add 4-bit representation of dictionary index
-                for (int k = 3; k >= 0; --k)
-                {
-                    indexRepresentation += ((j >> k) & 1) ? '1' : '0';
-                }
-                instructions[i] = indexRepresentation;
-                break; // Move to the next instruction
             }
         }
     }
