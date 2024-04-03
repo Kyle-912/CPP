@@ -93,6 +93,11 @@ void compression()
 
             for (size_t k = 0; k < instr.size(); ++k)
             {
+                if (k==8)
+                {
+                    cout<<"";
+                }
+
                 if (instr[k] != dict[k])
                 {
                     ++consecutiveMismatchCount;
