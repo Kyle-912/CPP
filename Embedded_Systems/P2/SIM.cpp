@@ -4,6 +4,8 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <unordered_map>
+#include <algorithm>
 
 using namespace std;
 
@@ -29,7 +31,32 @@ void compression()
     }
 
     vector<int> dictionaryIndices;
-    
+    unordered_map<string, int> counts;
+
+    // Count occurrences of each string
+    for (const string &instruction : instructions)
+    {
+        counts[instruction]++;
+    }
+
+    // Create a vector of pairs to store the counts and strings
+    vector<pair<int, string>> countStringPairs;
+
+    // Populate the vector of pairs
+    for (const auto &pair : counts)
+    {
+        countStringPairs.push_back(make_pair(pair.second, pair.first));
+    }
+
+    // Sort the vector of pairs in descending order based on counts
+    sort(countStringPairs.begin(), countStringPairs.end(), greater<pair<int, string>>());
+
+    // Extract the top 16 strings
+    vector<string> top16Strings;
+    for (size_t i = 0; i < std::min<size_t>(16, countStringPairs.size()); ++i)
+    {
+        top16Strings.push_back(countStringPairs[i].second);
+    }
 }
 
 void decompression()
