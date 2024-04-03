@@ -68,7 +68,7 @@ void compression()
         }
     }
 
-    // Mismatches Handling
+    // Consecutive Mismatches Handling
     for (size_t i = 0; i < instructions.size(); ++i)
     {
         const string &instr = instructions[i];
@@ -141,7 +141,7 @@ void compression()
         }
     }
 
-    
+
 
     cout << "";
 }
