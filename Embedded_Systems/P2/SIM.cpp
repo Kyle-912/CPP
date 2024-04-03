@@ -78,6 +78,11 @@ void compression()
         {
             continue; // Skip instructions that are not 32 bits
         }
+        if (i == 41)
+        {
+            /* code */
+        }
+
 
         for (size_t j = 0; j < dictionaryEntries.size(); ++j)
         {
