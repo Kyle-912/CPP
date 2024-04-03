@@ -83,6 +83,10 @@ void compression()
             int consecutiveMismatchCount = 0;
             int totalMismatchCount = 0;
             size_t longestMismatchStartIndex = 0;
+            if (i == instructions.size() - 1)
+            {
+                cout << "";
+            }
             for (size_t k = 0; k < instr.size(); ++k)
             {
                 if (i == instructions.size()-1)
