@@ -1,4 +1,4 @@
-// “I have neither given nor received any unauthorized aid on this assignment
+// “On my honor, I have neither given nor received any unauthorized aid on this assignment
 
 #include <iostream>
 #include <fstream>
