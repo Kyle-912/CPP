@@ -30,11 +30,11 @@ void compression()
         }
     }
 
-    vector<int> dictionaryIndices;
     unordered_map<string, int> counts;
 
     // Count occurrences of each string
-    for (const string& instruction : instructions) {
+    for (const string &instruction : instructions)
+    {
         counts[instruction]++;
     }
 
@@ -42,19 +42,32 @@ void compression()
     vector<pair<int, string>> countStringPairs;
 
     // Populate the vector of pairs
-    for (const auto& pair : counts) {
+    for (const auto &pair : counts)
+    {
         countStringPairs.push_back(make_pair(pair.second, pair.first));
     }
 
     // Sort the vector of pairs in descending order based on counts
-    sort(countStringPairs.begin(), countStringPairs.end(), greater<pair<int, string>>());
+    sort(countStringPairs.begin(), countStringPairs.end(), [&](const pair<int, string> &a, const pair<int, string> &b)
+         {
+        if (a.first != b.first) {
+            return a.first > b.first; // Sort by count in descending order
+        } else {
+            // If counts are equal, compare the indices of the strings in the original vector
+            auto indexA = find(instructions.begin(), instructions.end(), a.second);
+            auto indexB = find(instructions.begin(), instructions.end(), b.second);
+            return distance(instructions.begin(), indexA) < distance(instructions.begin(), indexB);
+        } });
 
     // Extract the top 16 strings
     vector<string> top16Strings;
-    for (size_t i = 0; i < std::min<size_t>(16, countStringPairs.size()); ++i) {
+    for (size_t i = 0; i < min<size_t>(16, countStringPairs.size()); ++i)
+    {
         top16Strings.push_back(countStringPairs[i].second);
     }
-    cout << "dictionary:" << endl;
+
+    // Output the top 16 strings
+    cout << "Dictionary:" << endl;
     for (const auto &r : top16Strings)
     {
         cout << r << endl;
