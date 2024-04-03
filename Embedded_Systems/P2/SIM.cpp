@@ -78,7 +78,7 @@ void compression()
             int currentMismatchCount = 0;
             int consecutiveMismatchCount = 0;
             int totalMismatchCount = 0;
-            size_t mismatchStartIndex = 0;
+            size_t longestMismatchStartIndex = 0;
             string mismatchEncoding = "";
 
             for (size_t k = 0; k < instr.size(); ++k)
@@ -94,7 +94,7 @@ void compression()
                     if (consecutiveMismatchCount == 0)
                     {
                         // Start of consecutive mismatches
-                        mismatchStartIndex = k;
+                        longestMismatchStartIndex = k;
                     }
                     ++consecutiveMismatchCount;
                 }
@@ -123,7 +123,7 @@ void compression()
                     }
 
                     // Encode mismatch
-                    mismatchEncoding += bitset<5>(mismatchStartIndex).to_string();
+                    mismatchEncoding += bitset<5>(longestMismatchStartIndex).to_string();
                     mismatchEncoding += bitset<4>(j).to_string();
                     instructions[i] = mismatchEncoding;
                     break;
