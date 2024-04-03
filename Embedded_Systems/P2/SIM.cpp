@@ -12,32 +12,32 @@ int main(int argc, char *argv[])
 
     if (option == 1)
     {
-        ifstream file("original.txt"); // Open the file for reading
+        ifstream file("original.txt");
 
         if (file.is_open())
         {
             cout << "Contents of original.txt:" << endl;
             char c;
-            while (file.get(c)) // Read the file character by character
+            while (file.get(c))
             {
                 cout << c;
             }
-            file.close(); // Close the file
+            file.close();
         }
     }
     else if (option == 2)
     {
-        ifstream file("compressed.txt"); // Open the file for reading
+        ifstream file("compressed.txt");
 
         if (file.is_open())
         {
             cout << "Contents of compressed.txt:" << endl;
             char c;
-            while (file.get(c)) // Read the file character by character
+            while (file.get(c))
             {
                 cout << c;
             }
-            file.close(); // Close the file
+            file.close();
         }
     }
 
