@@ -123,5 +123,6 @@ Heirarchy:
     bitmask - 13
     2-bit mismatches anywhere - 14
 
-Compress with lowest indicy 
+Compress with lowest indicy dictionary entry
+
 */
