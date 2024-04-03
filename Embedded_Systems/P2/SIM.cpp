@@ -24,10 +24,6 @@ int main(int argc, char *argv[])
             }
             file.close(); // Close the file
         }
-        else
-        {
-            cerr << "Error opening file original.txt" << endl;
-        }
     }
     else if (option == 2)
     {
