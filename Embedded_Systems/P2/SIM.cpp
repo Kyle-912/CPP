@@ -68,12 +68,9 @@ void compression()
         }
     }
 
-    bool mismatchFound = false;
-
     for (size_t i = 0; i < instructions.size(); ++i)
     {
         const string &instr = instructions[i];
-        bool instructionMatched = false;
 
         for (size_t j = 0; j < dictionaryEntries.size(); ++j)
         {
@@ -114,7 +111,6 @@ void compression()
                 // Add 4-bit representation of dictionary index
                 compressed += bitset<4>(j).to_string();
                 instructions[i] = compressed;
-                mismatchFound = true;
                 break;
             }
         }
