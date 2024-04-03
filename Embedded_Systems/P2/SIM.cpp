@@ -58,7 +58,6 @@ void decompression()
     {
         string line;
 
-        // Read lines until "xxxx" is encountered
         while (getline(file, line))
         {
             if (line == "xxxx")
