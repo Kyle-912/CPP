@@ -6,7 +6,8 @@
 
 using namespace std;
 
-void readFile(int selection);
+void compression();
+void decompression();
 
 int main(int argc, char *argv[])
 {
@@ -14,13 +15,15 @@ int main(int argc, char *argv[])
     switch (selection)
     {
     case 1:
-        /* code */
+        compression();
         break;
-    
+
+    case 2:
+        decompression();
+
     default:
         break;
     }
-    readFile(selection);
 
     return 0;
 }
