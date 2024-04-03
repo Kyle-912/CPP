@@ -86,16 +86,16 @@ void compression()
             int totalMismatchCount = 0;
             size_t longestMismatchStartIndex = 0;
 
-            if (j == dictionaryEntries.size()-1)
+            if (j == dictionaryEntries.size() - 1)
             {
                 cout << "";
             }
 
             for (size_t k = 0; k < instr.size(); ++k)
             {
-                if (k==8)
+                if (k == 8)
                 {
-                    cout<<"";
+                    cout << "";
                 }
 
                 if (instr[k] != dict[k])
@@ -143,12 +143,10 @@ void compression()
                 }
             }
         }
-if (consecutiveMismatchEncoding.size())
-{
-    /* code */
-}
-
-        instructions[i] = consecutiveMismatchEncoding;
+        if (consecutiveMismatchEncoding.size() != 0)
+        {
+            instructions[i] = consecutiveMismatchEncoding;
+        }
     }
 
     cout << "";
