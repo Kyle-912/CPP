@@ -28,6 +28,7 @@ void compression()
         }
     }
 
+    vector<int> dictionaryIndices;
     
 }
 
