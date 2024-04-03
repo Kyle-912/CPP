@@ -114,31 +114,29 @@ void compression()
                     consecutiveMismatchCount = 0;
                 }
 
-                if (consecutiveMismatchCount > 0)
+                if (consecutiveMismatchCount == 1)
                 {
-                    if (consecutiveMismatchCount == 1)
-                    {
-                        // Single-bit mismatch
-                        consecutiveMismatchEncoding = "011";
-                    }
-                    else if (consecutiveMismatchCount == 2)
-                    {
-                        // Two-bit consecutive mismatch
-                        consecutiveMismatchEncoding = "100";
-                    }
-                    else if (consecutiveMismatchCount == 4)
-                    {
-                        // Four-bit consecutive mismatch
-                        consecutiveMismatchEncoding = "101";
-                    }
-                    else if (consecutiveMismatchCount == 3)
-                    {
-                        consecutiveMismatchEncoding = "";
-                        break;
-                    }
-                    consecutiveMismatchEncoding += bitset<5>(longestMismatchStartIndex).to_string();
-                    consecutiveMismatchEncoding += bitset<4>(j).to_string();
+                    // Single-bit mismatch
+                    consecutiveMismatchEncoding = "011";
                 }
+                else if (consecutiveMismatchCount == 2)
+                {
+                    // Two-bit consecutive mismatch
+                    consecutiveMismatchEncoding = "100";
+                }
+                else if (consecutiveMismatchCount == 4)
+                {
+                    // Four-bit consecutive mismatch
+                    consecutiveMismatchEncoding = "101";
+                }
+                else if (consecutiveMismatchCount == 3)
+                {
+                    consecutiveMismatchEncoding = "";
+                    break;
+                }
+                consecutiveMismatchEncoding += bitset<5>(longestMismatchStartIndex).to_string();
+                consecutiveMismatchEncoding += bitset<4>(j).to_string();
+
                 if (k == 31)
                 {
                     instructions[i] = consecutiveMismatchEncoding;
