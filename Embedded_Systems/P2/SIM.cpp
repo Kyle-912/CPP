@@ -68,16 +68,80 @@ void compression()
         }
     }
 
+    // Mismatches Handling
     for (size_t i = 0; i < instructions.size(); ++i)
     {
         const string &instr = instructions[i];
         for (size_t j = 0; j < dictionaryEntries.size(); ++j)
         {
             const string &dict = dictionaryEntries[j];
-            
+            int mismatchCount = 0;
+            int consecutiveMismatchCount = 0;
+            size_t mismatchStartIndex = 0;
+            for (size_t k = 0; k < instr.size(); ++k)
+            {
+                if (instr[k] != dict[k])
+                {
+                    ++mismatchCount;
+                    if (mismatchCount > 4 || (k > 0 && instr[k - 1] != dict[k - 1]))
+                    {
+                        // Non-consecutive mismatch or more than 4 consecutive mismatches
+                        break;
+                    }
+                    if (consecutiveMismatchCount == 0)
+                    {
+                        // Start of consecutive mismatches
+                        mismatchStartIndex = k;
+                    }
+                    ++consecutiveMismatchCount;
+                }
+                else if (consecutiveMismatchCount > 0)
+                {
+                    // End of consecutive mismatches
+                    if (consecutiveMismatchCount == 1)
+                    {
+                        // Single-bit mismatch
+                        // Encode as "011" + 5 bit 0 indexed location from the left of the start of the mismatch + 4 bit representation of the index of the dictionary entry were mismatched from
+                        string mismatchEncoding = "011";
+                        mismatchEncoding += bitset<5>(mismatchStartIndex).to_string();
+                        mismatchEncoding += bitset<4>(j).to_string();
+                        instructions[i] = mismatchEncoding;
+                        break;
+                    }
+                    else if (consecutiveMismatchCount == 2)
+                    {
+                        // Two-bit consecutive mismatch
+                        // Encode as "100" + 5 bit 0 indexed location from the left of the start of the mismatch + 4 bit representation of the index of the dictionary entry were mismatched from
+                        string mismatchEncoding = "100";
+                        mismatchEncoding += bitset<5>(mismatchStartIndex).to_string();
+                        mismatchEncoding += bitset<4>(j).to_string();
+                        instructions[i] = mismatchEncoding;
+                        break;
+                    }
+                    else if (consecutiveMismatchCount == 4)
+                    {
+                        // Four-bit consecutive mismatch
+                        // Encode as "101" + 5 bit 0 indexed location from the left of the start of the mismatch + 4 bit representation of the index of the dictionary entry were mismatched from
+                        string mismatchEncoding = "101";
+                        mismatchEncoding += bitset<5>(mismatchStartIndex).to_string();
+                        mismatchEncoding += bitset<4>(j).to_string();
+                        instructions[i] = mismatchEncoding;
+                        break;
+                    }
+                    else
+                    {
+                        // More than four consecutive mismatches, handled as a bitmask
+                        break;
+                    }
+                }
+                else
+                {
+                    // No mismatch
+                    mismatchCount = 0;
+                }
+            }
         }
     }
-
     cout << "";
 }
 
