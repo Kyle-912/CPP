@@ -83,17 +83,8 @@ void compression()
             int consecutiveMismatchCount = 0;
             int totalMismatchCount = 0;
             size_t mismatchStartIndex = 0;
-            if (i == instructions.size() - 1)
-            {
-                cout << "";
-            }
             for (size_t k = 0; k < instr.size(); ++k)
             {
-                if (k == 29)
-                {
-                    cout << "";
-                }
-
                 if (instr[k] != dict[k])
                 {
                     ++consecutiveMismatchCount;
