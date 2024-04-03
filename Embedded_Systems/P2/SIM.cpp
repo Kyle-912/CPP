@@ -38,14 +38,10 @@ void compression()
         string instruction;
         while (getline(file, instruction))
         {
-            // Store the instruction in the vector
             instructions.push_back(instruction);
         }
-
-        // Close the file
         file.close();
 
-        // Print the contents of the vector
         cout << "Contents of original.txt:" << endl;
         for (const auto &r : instructions)
         {
