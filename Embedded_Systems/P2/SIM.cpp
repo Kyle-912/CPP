@@ -88,7 +88,7 @@ void compression()
 
             for (size_t k = 0; k < instr.size(); ++k)
             {
-                if (j == dictionaryEntries.size() - 1)
+                if (i == dictionaryEntries.size() - 1)
                 {
                     cout << "";
                 }
