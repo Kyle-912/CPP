@@ -114,9 +114,9 @@ int main(int argc, char *argv[])
 }
 
 /* Heirarchy:
-    RLE
-    Direct Match
-    1-bit mismatch
+    RLE - 3
+    Direct Match - 4
+    1-bit mismatch - 
     2-bit consecutive mistmatches
     4-bit consecutive mistmatches
     bitmask
