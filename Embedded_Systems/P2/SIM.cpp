@@ -75,5 +75,7 @@ void decompression()
         {
             cout << r << endl;
         }
+        cout << "xxxx" << endl;
+        
     }
 }
