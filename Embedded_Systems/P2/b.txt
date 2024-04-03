@@ -295,5 +295,9 @@ void compression()
                 }
             }
 
-            if (mismatchFound)
+            if (mismatchFound) {
+        cout << "nothing" << endl;
+    }
 
+    // Output compressed instructions (code not shown for brevity)
+}
