@@ -7,14 +7,14 @@
 
 using namespace std;
 
-vector<string> instructions;
 string compressedInstructions;
 vector<string> dictionary;
 
 void compression()
 {
-    ifstream file("original.txt");
+    vector<string> instructions;
 
+    ifstream file("original.txt");
     if (file.is_open())
     {
         string instruction;
