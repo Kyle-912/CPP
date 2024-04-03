@@ -3,7 +3,8 @@
         "vector": "cpp",
         "xstring": "cpp",
         "ostream": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "fstream": "cpp"
     },
     "gitdoc.enabled": true,
     "files.exclude": {

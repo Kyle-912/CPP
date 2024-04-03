@@ -6,10 +6,24 @@
 
 using namespace std;
 
+void readFile(int option);
+
 int main(int argc, char *argv[])
 {
-    int option = atoi(argv[1]);
+    if (argc != 2)
+    {
+        cerr << "Usage: " << argv[0] << " <1|2>" << endl;
+        return 1;
+    }
 
+    int option = atoi(argv[1]);
+    readFile(option);
+
+    return 0;
+}
+
+void readFile(int option)
+{
     if (option == 1)
     {
         ifstream file("original.txt");
@@ -40,6 +54,5 @@ int main(int argc, char *argv[])
             file.close();
         }
     }
-
-    return 0;
 }
+
