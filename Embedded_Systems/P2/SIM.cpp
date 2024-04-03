@@ -12,6 +12,7 @@ using namespace std;
 void compression()
 {
     vector<string> instructions;
+    vector<string> dictionaryEntries;
 
     ifstream file("original.txt");
     if (file.is_open())
@@ -43,8 +44,6 @@ void compression()
             auto indexB = find(instructions.begin(), instructions.end(), b.second);
             return distance(instructions.begin(), indexA) < distance(instructions.begin(), indexB);
         } });
-
-    vector<string> dictionaryEntries;
     for (size_t i = 0; i < min<size_t>(16, countStringPairs.size()); ++i)
     {
         dictionaryEntries.push_back(countStringPairs[i].second);
