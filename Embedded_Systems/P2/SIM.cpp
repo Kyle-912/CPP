@@ -73,32 +73,28 @@ void compression()
     {
         const string &instr = instructions[i];
         string consecutiveMismatchEncoding = "";
-
         if (instructions[i].size() != 32)
         {
             continue;
         }
-
         for (size_t j = 0; j < dictionaryEntries.size(); ++j)
         {
             const string &dict = dictionaryEntries[j];
             int consecutiveMismatchCount = 0;
             int totalMismatchCount = 0;
             size_t longestMismatchStartIndex = 0;
-
             for (size_t k = 0; k < instr.size(); ++k)
             {
                 if (instr[k] != dict[k])
                 {
                     ++consecutiveMismatchCount;
                     ++totalMismatchCount;
-                    
+
                     if (consecutiveMismatchCount > 4 || totalMismatchCount != consecutiveMismatchCount)
                     {
                         consecutiveMismatchEncoding = "";
                         break;
                     }
-
                     if (consecutiveMismatchCount == 1)
                     {
                         longestMismatchStartIndex = k;
