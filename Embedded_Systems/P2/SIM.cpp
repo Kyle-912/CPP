@@ -94,7 +94,6 @@ void compression()
                     ++totalMismatchCount;
                     if (consecutiveMismatchCount == 1)
                     {
-                        // Start of consecutive mismatches
                         longestMismatchStartIndex = k;
                     }
                     if (consecutiveMismatchCount > 4 || totalMismatchCount != consecutiveMismatchCount)
@@ -143,6 +142,7 @@ void compression()
                 break;
             }
         }
+
         instructions[i] = consecutiveMismatchEncoding;
     }
 
