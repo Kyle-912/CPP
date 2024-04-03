@@ -142,7 +142,60 @@ void compression()
     }
 
     // 2 Mismatches Anywhere Handling
-    
+    for (size_t i = 0; i < instructions.size(); ++i)
+    {
+        const string &instr = instructions[i];
+        string encodedInstruction = "";
+
+        if (instr.size() != 32)
+        {
+            continue; // Skip instructions that are not 32 bits
+        }
+
+        for (size_t j = 0; j < dictionaryEntries.size(); ++j)
+        {
+            const string &dict = dictionaryEntries[j];
+            int mismatchCount = 0;
+            size_t firstMismatchIndex = 0;
+            size_t secondMismatchIndex = 0;
+
+            for (size_t k = 0; k < instr.size(); ++k)
+            {
+                if (instr[k] != dict[k])
+                {
+                    mismatchCount++;
+                    if (mismatchCount == 1)
+                    {
+                        firstMismatchIndex = k;
+                    }
+                    else if (mismatchCount == 2)
+                    {
+                        secondMismatchIndex = k;
+                    }
+                    else if (mismatchCount > 2)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            if (mismatchCount == 2)
+            {
+                // Encode two mismatches
+                encodedInstruction = "110";
+                encodedInstruction += bitset<5>(firstMismatchIndex).to_string();
+                encodedInstruction += bitset<5>(secondMismatchIndex).to_string();
+                encodedInstruction += bitset<4>(j).to_string();
+                break;
+            }
+        }
+
+        // Replace instruction with encoded instruction
+        if (!encodedInstruction.empty())
+        {
+            instructions[i] = encodedInstruction;
+        }
+    }
 
     cout << "";
 }
