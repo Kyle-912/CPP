@@ -68,10 +68,12 @@ void compression()
         }
     }
 
+    bool foundMismatch = false;
+
     for (size_t i = 0; i < instructions.size(); ++i)
     {
         const string &instr = instructions[i];
-        bool foundMismatch = false;
+        bool mismatchFound = false;
         int mismatchIndex1 = -1;
         int mismatchIndex2 = -1;
         int dictionaryIndex = -1;
@@ -120,7 +122,7 @@ void compression()
                 // Add 4-bit representation of dictionary index
                 compressed += bitset<4>(dictionaryIndex).to_string();
                 instructions[i] = compressed;
-                foundMismatch = true;
+                mismatchFound = true;
                 break;
             }
             else if (mismatchCount == 2 && mismatchIndex2 - mismatchIndex1 == 1)
@@ -132,31 +134,12 @@ void compression()
                 // Add 4-bit representation of dictionary index
                 compressed += bitset<4>(dictionaryIndex).to_string();
                 instructions[i] = compressed;
-                foundMismatch = true;
-                break;
-            }
-            else if (mismatchCount == 4 && mismatchIndex1 == 0)
-            {
-                // Found four consecutive bit mismatches, replace with bitmask
-                string bitmask;
-                for (size_t m = 0; m < instr.length(); ++m)
-                {
-                    bitmask += (instr[m] == dict[m]) ? '0' : '1';
-                }
-                string compressed = "101";
-                // Add 5-bit representation of mismatch or start of mismatch
-                compressed += bitset<5>(mismatchStart).to_string();
-                // Add 4-bit bitmask
-                compressed += bitmask.substr(mismatchStart, 4);
-                // Add 4-bit representation of dictionary index
-                compressed += bitset<4>(dictionaryIndex).to_string();
-                instructions[i] = compressed;
-                foundMismatch = true;
+                mismatchFound = true;
                 break;
             }
         }
 
-        if (!foundMismatch && mismatchIndex1 != -1 && mismatchIndex2 != -1)
+        if (!mismatchFound && mismatchIndex1 != -1 && mismatchIndex2 != -1)
         {
             // Found a 2 bit mismatch anywhere
             string compressed = "110";
@@ -167,8 +150,14 @@ void compression()
             // Add 4-bit representation of dictionary index
             compressed += bitset<4>(dictionaryIndex).to_string();
             instructions[i] = compressed;
-            foundMismatch = true;
+            mismatchFound = true;
+            break;
         }
+    }
+
+    if (!foundMismatch)
+    {
+        cout << "nothing" << endl;
     }
 
     cout << "";
