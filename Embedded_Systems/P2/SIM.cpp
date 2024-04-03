@@ -57,13 +57,14 @@ void decompression()
 
     if (file.is_open())
     {
-        while (getline(file, compressedInstructions))
+        string line;
+        while (getline(file, line))
         {
-            if (compressedInstructions == "xxxx")
+            if (line == "xxxx")
             {
                 break;
             }
-            instructions.push_back(compressedInstructions);
+            compressedInstructions += line; // Concatenate each line to compressedInstructions
         }
 
         file.close();
