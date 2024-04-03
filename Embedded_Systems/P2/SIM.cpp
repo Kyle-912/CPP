@@ -140,7 +140,7 @@ void compression()
                     consecutiveMismatchEncoding += bitset<4>(j).to_string();
                 }
 
-                if (k == 31 )
+                if (k == 31 && consecutiveMismatchEncoding.size() != 0)
                 {
                     instructions[i] = consecutiveMismatchEncoding;
                 }
