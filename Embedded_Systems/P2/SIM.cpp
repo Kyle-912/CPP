@@ -117,5 +117,7 @@ int main(int argc, char *argv[])
     RLE
     Direct Match
     1-bit mismatch
-    2-bit con
+    2-bit consecutive mistmatches
+    4-bit consecutive mistmatches
+    
 */
