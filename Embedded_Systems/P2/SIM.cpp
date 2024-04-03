@@ -10,6 +10,8 @@ using namespace std;
 void compression();
 void decompression();
 
+vector<string> instructions;
+
 int main(int argc, char *argv[])
 {
     int selection = atoi(argv[1]);
@@ -33,7 +35,7 @@ void compression()
     if (file.is_open())
     {
         // Vector to store each row as a string
-        vector<string> instructions;
+
 
         // Read the file line by line
         string row;
