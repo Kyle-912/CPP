@@ -31,34 +31,32 @@ int main(int argc, char *argv[])
 void compression()
 {
 
-        ifstream file("original.txt");
+    ifstream file("original.txt");
 
-        if (file.is_open())
+    if (file.is_open())
+    {
+        cout << "Contents of original.txt:" << endl;
+        char c;
+        while (file.get(c))
         {
-            cout << "Contents of original.txt:" << endl;
-            char c;
-            while (file.get(c))
-            {
-                cout << c;
-            }
-            file.close();
+            cout << c;
         }
+        file.close();
+    }
 }
 
+void decompression()
+{
+    ifstream file("compressed.txt");
 
-
-    void compression()
+    if (file.is_open())
     {
-        ifstream file("compressed.txt");
-
-        if (file.is_open())
+        cout << "Contents of compressed.txt:" << endl;
+        char c;
+        while (file.get(c))
         {
-            cout << "Contents of compressed.txt:" << endl;
-            char c;
-            while (file.get(c))
-            {
-                cout << c;
-            }
-            file.close();
+            cout << c;
         }
+        file.close();
     }
+}
