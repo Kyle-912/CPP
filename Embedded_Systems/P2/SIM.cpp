@@ -22,12 +22,6 @@ void compression()
             instructions.push_back(instruction);
         }
         file.close();
-
-        cout << "Contents of original.txt:" << endl;
-        for (const auto &r : instructions)
-        {
-            cout << r << endl;
-        }
     }
 
     unordered_map<string, int> counts;
