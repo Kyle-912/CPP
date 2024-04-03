@@ -6,6 +6,7 @@
 #include <string>
 #include <unordered_map>
 #include <algorithm>
+#include <bitset>
 
 using namespace std;
 
@@ -71,7 +72,8 @@ void compression()
     {
         const string &instr = instructions[i];
         bool foundMismatch = false;
-        int mismatchIndex = -1;
+        int mismatchIndex1 = -1;
+        int mismatchIndex2 = -1;
         int dictionaryIndex = -1;
 
         for (size_t j = 0; j < dictionaryEntries.size(); ++j)
@@ -79,7 +81,6 @@ void compression()
             const string &dict = dictionaryEntries[j];
             int mismatchCount = 0;
             int mismatchStart = -1;
-            string bitmask;
 
             if (instr.length() != dict.length())
                 continue; // Skip if lengths are different
@@ -100,65 +101,73 @@ void compression()
                     }
                     if (mismatchCount == 1)
                     {
-                        mismatchIndex = k;
+                        mismatchIndex1 = k;
                         dictionaryIndex = j;
                     }
-                    else if (mismatchCount == 2 && k - mismatchIndex == 1)
+                    else if (mismatchCount == 2 && k - mismatchIndex1 == 1)
                     {
-                        // Found two consecutive bit mismatches
-                        bitmask = "100";
-                        break;
-                    }
-                    else if (mismatchCount == 4 && k - mismatchIndex == 3)
-                    {
-                        // Found four consecutive bit mismatches
-                        bitmask = "101";
-                        break;
-                    }
-                    else if (mismatchCount == 2)
-                    {
-                        // Found two mismatches anywhere
-                        bitmask = "110";
-                        break;
+                        mismatchIndex2 = k;
                     }
                 }
             }
 
-            if (!bitmask.empty())
+            if (mismatchCount == 1)
             {
-                // Construct the compressed instruction
-                string indexRepresentation = bitmask;
-                // Add 5-bit representation of mismatch or start of mismatch
-                for (int m = 4; m >= 0; --m)
-                {
-                    indexRepresentation += ((bitmask == "110" ? mismatchStart : mismatchIndex) >> m) & 1 ? '1' : '0';
-                }
+                // Found a 1-bit mismatch
+                string compressed = "011";
+                // Add 5-bit representation of mismatch index
+                compressed += bitset<5>(mismatchIndex1).to_string();
                 // Add 4-bit representation of dictionary index
-                for (int m = 3; m >= 0; --m)
-                {
-                    indexRepresentation += (dictionaryIndex >> m) & 1 ? '1' : '0';
-                }
-                instructions[i] = indexRepresentation;
+                compressed += bitset<4>(dictionaryIndex).to_string();
+                instructions[i] = compressed;
                 foundMismatch = true;
-                break; // Move to the next instruction
+                break;
+            }
+            else if (mismatchCount == 2 && mismatchIndex2 - mismatchIndex1 == 1)
+            {
+                // Found two consecutive bit mismatches
+                string compressed = "100";
+                // Add 5-bit representation of mismatch or start of mismatch
+                compressed += bitset<5>(mismatchStart).to_string();
+                // Add 4-bit representation of dictionary index
+                compressed += bitset<4>(dictionaryIndex).to_string();
+                instructions[i] = compressed;
+                foundMismatch = true;
+                break;
+            }
+            else if (mismatchCount == 4 && mismatchIndex1 == 0)
+            {
+                // Found four consecutive bit mismatches, replace with bitmask
+                string bitmask;
+                for (size_t m = 0; m < instr.length(); ++m)
+                {
+                    bitmask += (instr[m] == dict[m]) ? '0' : '1';
+                }
+                string compressed = "101";
+                // Add 5-bit representation of mismatch or start of mismatch
+                compressed += bitset<5>(mismatchStart).to_string();
+                // Add 4-bit bitmask
+                compressed += bitmask.substr(mismatchStart, 4);
+                // Add 4-bit representation of dictionary index
+                compressed += bitset<4>(dictionaryIndex).to_string();
+                instructions[i] = compressed;
+                foundMismatch = true;
+                break;
             }
         }
 
-        if (!foundMismatch && mismatchIndex != -1)
+        if (!foundMismatch && mismatchIndex1 != -1 && mismatchIndex2 != -1)
         {
-            // Found a 1-bit mismatch
-            string indexRepresentation = "011";
-            // Add 5-bit representation of mismatch index
-            for (int m = 4; m >= 0; --m)
-            {
-                indexRepresentation += (mismatchIndex >> m) & 1 ? '1' : '0';
-            }
+            // Found a 2 bit mismatch anywhere
+            string compressed = "110";
+            // Add 5-bit representation of first mismatch index
+            compressed += bitset<5>(mismatchIndex1).to_string();
+            // Add 5-bit representation of second mismatch index
+            compressed += bitset<5>(mismatchIndex2).to_string();
             // Add 4-bit representation of dictionary index
-            for (int m = 3; m >= 0; --m)
-            {
-                indexRepresentation += (dictionaryIndex >> m) & 1 ? '1' : '0';
-            }
-            instructions[i] = indexRepresentation;
+            compressed += bitset<4>(dictionaryIndex).to_string();
+            instructions[i] = compressed;
+            foundMismatch = true;
         }
     }
 
