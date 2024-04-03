@@ -30,12 +30,12 @@ void compression()
     {
         counts[instruction]++;
     }
-    vector<pair<int, string>> countStringPairs;
+    vector<pair<int, string>> countsVector;
     for (const auto &pair : counts)
     {
-        countStringPairs.push_back(make_pair(pair.second, pair.first));
+        countsVector.push_back(make_pair(pair.second, pair.first));
     }
-    sort(countStringPairs.begin(), countStringPairs.end(), [&](const pair<int, string> &a, const pair<int, string> &b)
+    sort(countsVector.begin(), countsVector.end(), [&](const pair<int, string> &a, const pair<int, string> &b)
          {
         if (a.first != b.first) {
             return a.first > b.first;
@@ -44,12 +44,12 @@ void compression()
             auto indexB = find(instructions.begin(), instructions.end(), b.second);
             return distance(instructions.begin(), indexA) < distance(instructions.begin(), indexB);
         } });
-    for (size_t i = 0; i < min<size_t>(16, countStringPairs.size()); ++i)
+    for (size_t i = 0; i < min<size_t>(16, countsVector.size()); ++i)
     {
-        dictionaryEntries.push_back(countStringPairs[i].second);
+        dictionaryEntries.push_back(countsVector[i].second);
     }
 
-    
+
 }
 
 void decompression()
