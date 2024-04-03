@@ -28,10 +28,9 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-void compression(int selection)
+void compression()
 {
-    if (selection == 1)
-    {
+
         ifstream file("original.txt");
 
         if (file.is_open())
@@ -44,8 +43,11 @@ void compression(int selection)
             }
             file.close();
         }
-    }
-    else if (selection == 2)
+}
+
+
+
+    void compression()
     {
         ifstream file("compressed.txt");
 
@@ -60,9 +62,3 @@ void compression(int selection)
             file.close();
         }
     }
-}
-
-void compression()
-{
-    
-}
