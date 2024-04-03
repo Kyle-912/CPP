@@ -195,7 +195,8 @@ void compression()
         }
     }
 
-    // 
+    // Bitmask Handling
+    
 
     cout << "";
 }
