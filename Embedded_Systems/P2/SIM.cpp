@@ -83,7 +83,7 @@ void compression()
                 if (instr[k] != dict[k])
                 {
                     ++mismatchCount;
-                    if (mismatchCount > 4 || (k > 0 && instr[k - 1] != dict[k - 1]))
+                    if (mismatchCount > 4 || (k > 0 && instr[k - 1] != dict[k - 1])) //FIXME:
                     {
                         // Non-consecutive mismatch or more than 4 consecutive mismatches
                         break;
