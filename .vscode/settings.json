@@ -1,7 +1,8 @@
 {
     "files.associations": {
         "vector": "cpp",
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "ostream": "cpp"
     },
     "gitdoc.enabled": true
 }
