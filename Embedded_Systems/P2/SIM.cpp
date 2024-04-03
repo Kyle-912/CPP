@@ -143,6 +143,7 @@ void compression()
                 if (k == 31 && consecutiveMismatchEncoding.size() != 0)
                 {
                     instructions[i] = consecutiveMismatchEncoding;
+                    break;
                 }
             }
         }
