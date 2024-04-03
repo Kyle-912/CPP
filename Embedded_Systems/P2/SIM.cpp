@@ -70,9 +70,9 @@ void compression()
 
     for (size_t i = 0; i < instructions.size(); ++i)
     {
+        const string &instr = instructions[i];
         for (size_t j = 0; j < dictionaryEntries.size(); ++j)
         {
-            const string &instr = instructions[i];
             const string &dict = dictionaryEntries[j];
 
             // Check for 1-bit mismatch
