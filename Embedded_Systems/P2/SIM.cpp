@@ -49,7 +49,7 @@ void compression()
         dictionaryEntries.push_back(countsVector[i].second);
     }
 
-    
+
 
     cout << "";
 }
@@ -112,3 +112,5 @@ int main(int argc, char *argv[])
 
     return 0;
 }
+
+//Heirarchy:
