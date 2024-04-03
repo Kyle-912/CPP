@@ -149,7 +149,7 @@ void compression()
 
         if (instr.size() != 32)
         {
-            continue; // Skip instructions that are not 32 bits
+            continue;
         }
 
         for (size_t j = 0; j < dictionaryEntries.size(); ++j)
