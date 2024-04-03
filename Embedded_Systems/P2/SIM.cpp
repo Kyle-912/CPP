@@ -27,6 +27,7 @@ void compression()
             cout << r << endl;
         }
     }
+    
 }
 
 void decompression()
