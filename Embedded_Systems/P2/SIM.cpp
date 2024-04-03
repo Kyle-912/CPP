@@ -1,3 +1,5 @@
+// “On my honor, I have neither given nor received any unauthorized aid on this assignment
+
 #include <iostream>
 
 int main()
