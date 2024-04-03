@@ -58,13 +58,23 @@ void decompression()
     if (file.is_open())
     {
         string line;
+        bool startStoring = false;
         while (getline(file, line))
         {
             if (line == "xxxx")
             {
-                break;
+                startStoring = true; // Set the flag to true after reading "xxxx"
+                continue;            // Skip storing "xxxx" in the vector
             }
-            compressedInstructions += line;
+
+            if (startStoring)
+            {
+                instructions.push_back(line); // Store lines to the vector
+            }
+            else
+            {
+                compressedInstructions += line; // Concatenate lines before "xxxx"
+            }
         }
         file.close();
 
