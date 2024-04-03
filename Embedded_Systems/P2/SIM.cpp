@@ -109,6 +109,11 @@ void compression()
                         longestMismatchStartIndex = k;
                     }
                 }
+                else
+                {
+                    consecutiveMismatchCount = 0;
+                }
+
                 if (consecutiveMismatchCount > 0)
                 {
                     if (consecutiveMismatchCount == 1)
@@ -134,7 +139,6 @@ void compression()
                     consecutiveMismatchEncoding += bitset<5>(longestMismatchStartIndex).to_string();
                     consecutiveMismatchEncoding += bitset<4>(j).to_string();
                 }
-                consecutiveMismatchCount = 0;
                 if (k == 31)
                 {
                     instructions[i] = consecutiveMismatchEncoding;
