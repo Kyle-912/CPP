@@ -104,7 +104,7 @@ void compression()
                     ++totalMismatchCount;
                     if (consecutiveMismatchCount > 4 || totalMismatchCount != consecutiveMismatchCount)
                     {
-                        consecutiveMismatchEncoding = "011";
+                        consecutiveMismatchEncoding = "";
                         break;
                     }
                     if (consecutiveMismatchCount == 1)
@@ -143,6 +143,10 @@ void compression()
                 }
             }
         }
+if (consecutiveMismatchEncoding.size())
+{
+    /* code */
+}
 
         instructions[i] = consecutiveMismatchEncoding;
     }
