@@ -43,13 +43,12 @@ void compression()
             auto indexA = find(instructions.begin(), instructions.end(), a.second);
             auto indexB = find(instructions.begin(), instructions.end(), b.second);
             return distance(instructions.begin(), indexA) < distance(instructions.begin(), indexB);
-        } });
+        }
+        });
     for (size_t i = 0; i < min<size_t>(16, countStringPairs.size()); ++i)
     {
         dictionaryEntries.push_back(countStringPairs[i].second);
     }
-
-
 }
 
 void decompression()
