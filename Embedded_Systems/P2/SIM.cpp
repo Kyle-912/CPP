@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-void readFile(int selection)
+void compression(int selection)
 {
     if (selection == 1)
     {
