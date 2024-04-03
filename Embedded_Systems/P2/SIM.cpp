@@ -95,7 +95,7 @@ void compression()
                         consecutiveMismatchEncoding = "";
                         break;
                     }
-                    
+
                     if (consecutiveMismatchCount == 1)
                     {
                         mismatchStartIndex = k;
@@ -140,6 +140,8 @@ void compression()
             }
         }
     }
+
+    
 
     cout << "";
 }
