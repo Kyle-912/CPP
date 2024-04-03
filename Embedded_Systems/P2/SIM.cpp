@@ -85,6 +85,11 @@ void compression()
             size_t longestMismatchStartIndex = 0;
             for (size_t k = 0; k < instr.size(); ++k)
             {
+                if (i == 31 && k == 31)
+                {
+                    cout<<"";
+                }
+
                 if (instr[k] != dict[k])
                 {
                     ++consecutiveMismatchCount;
