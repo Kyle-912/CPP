@@ -43,15 +43,13 @@ void compression()
     sort(countStringPairs.begin(), countStringPairs.end(), [&](const pair<int, string> &a, const pair<int, string> &b)
          {
         if (a.first != b.first) {
-            return a.first > b.first; // Sort by count in descending order
+            return a.first > b.first;
         } else {
-            // If counts are equal, compare the indices of the strings in the original vector
             auto indexA = find(instructions.begin(), instructions.end(), a.second);
             auto indexB = find(instructions.begin(), instructions.end(), b.second);
             return distance(instructions.begin(), indexA) < distance(instructions.begin(), indexB);
         } });
 
-    // Extract the top 16 strings
     vector<string> top16Strings;
     for (size_t i = 0; i < min<size_t>(16, countStringPairs.size()); ++i)
     {
@@ -106,8 +104,6 @@ void decompression()
             cout << r << endl;
         }
     }
-
-
 }
 
 int main(int argc, char *argv[])
