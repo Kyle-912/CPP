@@ -69,7 +69,6 @@ void compression()
     }
 
     bool mismatchFound = false;
-    int bitmaskStartIndex = -1; // Initialize to an invalid value
 
     for (size_t i = 0; i < instructions.size(); ++i)
     {
@@ -85,6 +84,7 @@ void compression()
             // Check for bitmask mismatch
             bitset<4> bitmask;
             bool bitmaskMismatch = false;
+            int bitmaskStartIndex = -1; // Initialize to an invalid value
             for (size_t k = 0; k < instr.length(); ++k)
             {
                 if (instr[k] != dict[k])
