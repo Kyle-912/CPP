@@ -85,7 +85,7 @@ void compression()
             size_t longestMismatchStartIndex = 0;
             for (size_t k = 0; k < instr.size(); ++k)
             {
-                if (i == instructions.size()-1 && k == 30)
+                if (i == instructions.size()-1)
                 {
                     cout<<"";
                 }
