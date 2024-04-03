@@ -189,7 +189,6 @@ void compression()
             }
         }
 
-        // Replace instruction with encoded instruction
         if (!encodedInstruction.empty())
         {
             instructions[i] = encodedInstruction;
