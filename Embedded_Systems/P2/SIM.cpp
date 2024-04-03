@@ -74,9 +74,9 @@ void compression()
         for (size_t j = 0; j < dictionaryEntries.size(); ++j)
         {
             const string &dict = dictionaryEntries[j];
+            int mismatchIndex = -1;
 
             // Check for 1-bit mismatch
-            int mismatchIndex = -1;
             for (size_t k = 0; k < instr.length(); ++k)
             {
                 if (instr[k] != dict[k])
