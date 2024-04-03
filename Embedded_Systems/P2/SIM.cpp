@@ -11,6 +11,7 @@ void compression();
 void decompression();
 
 vector<string> instructions;
+string line;
 vector<string> dictionary;
 
 int main(int argc, char *argv[])
@@ -56,8 +57,6 @@ void decompression()
 
     if (file.is_open())
     {
-        string line;
-
         while (getline(file, line))
         {
             if (line == "xxxx")
