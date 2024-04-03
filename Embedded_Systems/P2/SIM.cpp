@@ -75,7 +75,7 @@ void compression()
         for (size_t j = 0; j < dictionaryEntries.size(); ++j)
         {
             const string &dict = dictionaryEntries[j];
-            int mismatchCount = 0;
+            int currentMismatchCount = 0;
             int consecutiveMismatchCount = 0;
             int totalMismatchCount = 0;
             size_t mismatchStartIndex = 0;
@@ -85,8 +85,8 @@ void compression()
             {
                 if (instr[k] != dict[k])
                 {
-                    ++mismatchCount;
-                    if (mismatchCount > 4 || (k > 0 && instr[k - 1] != dict[k - 1])) //FIXME:
+                    ++currentMismatchCount;
+                    if (currentMismatchCount > 4 || (k > 0 && instr[k - 1] != dict[k - 1])) //FIXME:
                     {
                         // Non-consecutive mismatch or more than 4 consecutive mismatches
                         break;
@@ -131,7 +131,7 @@ void compression()
                 else
                 {
                     // No mismatch
-                    mismatchCount = 0;
+                    currentMismatchCount = 0;
                 }
             }
         }
