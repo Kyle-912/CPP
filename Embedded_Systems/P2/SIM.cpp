@@ -14,22 +14,6 @@ vector<string> instructions;
 string compressedInstructions;
 vector<string> dictionary;
 
-int main(int argc, char *argv[])
-{
-    int selection = atoi(argv[1]);
-    switch (selection)
-    {
-    case 1:
-        compression();
-        break;
-
-    case 2:
-        decompression();
-    }
-
-    return 0;
-}
-
 void compression()
 {
     ifstream file("original.txt");
@@ -89,4 +73,20 @@ void decompression()
             cout << r << endl;
         }
     }
+}
+
+int main(int argc, char *argv[])
+{
+    int selection = atoi(argv[1]);
+    switch (selection)
+    {
+    case 1:
+        compression();
+        break;
+
+    case 2:
+        decompression();
+    }
+
+    return 0;
 }
