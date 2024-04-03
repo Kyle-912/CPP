@@ -89,9 +89,9 @@ void compression()
             }
             for (size_t k = 0; k < instr.size(); ++k)
             {
-                if (i == instructions.size()-1)
+                if (i == instructions.size() - 1)
                 {
-                    cout<<"";
+                    cout << "";
                 }
 
                 if (instr[k] != dict[k])
@@ -137,11 +137,10 @@ void compression()
                         consecutiveMismatchEncoding += bitset<4>(j).to_string();
                     }
                     consecutiveMismatchCount = 0;
-                    if (k == 31)
-                    {
-                        instructions[i] = consecutiveMismatchEncoding;
-                    }
-
+                }
+                if (k == 31)
+                {
+                    instructions[i] = consecutiveMismatchEncoding;
                 }
             }
         }
