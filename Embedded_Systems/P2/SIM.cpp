@@ -69,15 +69,17 @@ void compression()
 
     for (size_t i = 0; i < instructions.size(); ++i)
     {
+        const string &instr = instructions[i];
         bool foundMismatch = false;
         int mismatchIndex = -1;
         int dictionaryIndex = -1;
 
         for (size_t j = 0; j < dictionaryEntries.size(); ++j)
         {
-            const string &instr = instructions[i];
             const string &dict = dictionaryEntries[j];
             int mismatchCount = 0;
+            int mismatchStart = -1;
+            string bitmask;
 
             if (instr.length() != dict.length())
                 continue; // Skip if lengths are different
@@ -86,10 +88,14 @@ void compression()
             {
                 if (instr[k] != dict[k])
                 {
-                    mismatchCount++;
-                    if (mismatchCount > 2)
+                    if (mismatchStart == -1)
                     {
-                        // More than 2 mismatches, no need to continue
+                        mismatchStart = k;
+                    }
+                    mismatchCount++;
+                    if (mismatchCount > 4)
+                    {
+                        // More than 4 mismatches, no need to continue
                         break;
                     }
                     if (mismatchCount == 1)
@@ -100,43 +106,57 @@ void compression()
                     else if (mismatchCount == 2 && k - mismatchIndex == 1)
                     {
                         // Found two consecutive bit mismatches
-                        // Replace instruction with "100" + 5-bit representation of mismatch start + 4-bit representation of dictionary index
-                        string indexRepresentation = "100";
-                        // Add 5-bit representation of mismatch start
-                        for (int m = 4; m >= 0; --m)
-                        {
-                            indexRepresentation += ((mismatchIndex >> m) & 1) ? '1' : '0';
-                        }
-                        // Add 4-bit representation of dictionary index
-                        for (int m = 3; m >= 0; --m)
-                        {
-                            indexRepresentation += ((dictionaryIndex >> m) & 1) ? '1' : '0';
-                        }
-                        instructions[i] = indexRepresentation;
-                        foundMismatch = true;
-                        break; // Move to the next instruction
+                        bitmask = "100";
+                        break;
+                    }
+                    else if (mismatchCount == 4 && k - mismatchIndex == 3)
+                    {
+                        // Found four consecutive bit mismatches
+                        bitmask = "101";
+                        break;
+                    }
+                    else if (mismatchCount == 2)
+                    {
+                        // Found two mismatches anywhere
+                        bitmask = "110";
+                        break;
                     }
                 }
             }
-            if (foundMismatch)
+
+            if (!bitmask.empty())
             {
+                // Construct the compressed instruction
+                string indexRepresentation = bitmask;
+                // Add 5-bit representation of mismatch or start of mismatch
+                for (int m = 4; m >= 0; --m)
+                {
+                    indexRepresentation += ((bitmask == "110" ? mismatchStart : mismatchIndex) >> m) & 1 ? '1' : '0';
+                }
+                // Add 4-bit representation of dictionary index
+                for (int m = 3; m >= 0; --m)
+                {
+                    indexRepresentation += (dictionaryIndex >> m) & 1 ? '1' : '0';
+                }
+                instructions[i] = indexRepresentation;
+                foundMismatch = true;
                 break; // Move to the next instruction
             }
         }
 
         if (!foundMismatch && mismatchIndex != -1)
         {
-            // Replace instruction with "011" + 5-bit representation of mismatch index + 4-bit representation of dictionary index
+            // Found a 1-bit mismatch
             string indexRepresentation = "011";
             // Add 5-bit representation of mismatch index
             for (int m = 4; m >= 0; --m)
             {
-                indexRepresentation += ((mismatchIndex >> m) & 1) ? '1' : '0';
+                indexRepresentation += (mismatchIndex >> m) & 1 ? '1' : '0';
             }
             // Add 4-bit representation of dictionary index
             for (int m = 3; m >= 0; --m)
             {
-                indexRepresentation += ((dictionaryIndex >> m) & 1) ? '1' : '0';
+                indexRepresentation += (dictionaryIndex >> m) & 1 ? '1' : '0';
             }
             instructions[i] = indexRepresentation;
         }
