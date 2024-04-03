@@ -36,7 +36,7 @@ void compression()
         char c;
         while (file.get(c))
         {
-            cout << c;
+            // cout << c;
         }
         file.close();
     }
