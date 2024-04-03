@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void readFile(int option);
+void readFile(int compression_decompression);
 
 int main(int argc, char *argv[])
 {
@@ -16,15 +16,15 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    int option = atoi(argv[1]);
-    readFile(option);
+    int compression_decompression = atoi(argv[1]);
+    readFile(compression_decompression);
 
     return 0;
 }
 
-void readFile(int option)
+void readFile(int compression_decompression)
 {
-    if (option == 1)
+    if (compression_decompression == 1)
     {
         ifstream file("original.txt");
 
@@ -39,7 +39,7 @@ void readFile(int option)
             file.close();
         }
     }
-    else if (option == 2)
+    else if (compression_decompression == 2)
     {
         ifstream file("compressed.txt");
 
