@@ -54,7 +54,7 @@ void compression()
     for (size_t i = 0; i < std::min<size_t>(16, countStringPairs.size()); ++i) {
         top16Strings.push_back(countStringPairs[i].second);
     }
-
+    cout << "dictioanry" << endl;
     for (const auto &r : top16Strings)
     {
         cout << r << endl;
