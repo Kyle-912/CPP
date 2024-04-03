@@ -7,9 +7,6 @@
 
 using namespace std;
 
-string compressedInstructions;
-vector<string> dictionary;
-
 void compression()
 {
     vector<string> instructions;
@@ -34,8 +31,10 @@ void compression()
 
 void decompression()
 {
-    ifstream file("compressed.txt");
+    string compressedInstructions;
+    vector<string> dictionary;
 
+    ifstream file("compressed.txt");
     if (file.is_open())
     {
         string line;
