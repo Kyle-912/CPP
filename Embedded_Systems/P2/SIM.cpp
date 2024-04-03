@@ -131,7 +131,7 @@ void compression()
                         // Four-bit consecutive mismatch
                         consecutiveMismatchEncoding = "101";
                     }
-                    else
+                    else if (consecutiveMismatchCount == 3)
                     {
                         consecutiveMismatchEncoding = "";
                         break;
