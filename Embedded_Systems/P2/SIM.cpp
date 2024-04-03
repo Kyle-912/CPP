@@ -64,7 +64,7 @@ void decompression()
             if (line == "xxxx")
             {
                 isDictionary = true; // Set the flag to true after reading "xxxx"
-                continue;            // Skip storing "xxxx" in the vector
+                continue;            
             }
 
             if (isDictionary)
