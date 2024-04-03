@@ -102,7 +102,6 @@ void compression()
                 }
                 else
                 {
-                    // End of consecutive mismatches
                     if (consecutiveMismatchCount > 0)
                     {
                         if (consecutiveMismatchCount == 1)
