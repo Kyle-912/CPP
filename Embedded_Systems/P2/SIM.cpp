@@ -120,5 +120,5 @@ int main(int argc, char *argv[])
     2-bit consecutive mistmatches - 9
     4-bit consecutive mistmatches - 9
     bitmask - 13
-    2-bit mismatches anywhere - 
+    2-bit mismatches anywhere - 14
 */
