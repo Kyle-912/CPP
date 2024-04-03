@@ -76,7 +76,7 @@ void compression()
 
         if (instructions[i].size() != 32)
         {
-            continue; // Skip instructions that are not 32 bits
+            continue;
         }
 
         for (size_t j = 0; j < dictionaryEntries.size(); ++j)
@@ -88,11 +88,6 @@ void compression()
 
             for (size_t k = 0; k < instr.size(); ++k)
             {
-                if (i == instructions.size() - 1)
-                {
-                    cout << "";
-                }
-
                 if (instr[k] != dict[k])
                 {
                     ++consecutiveMismatchCount;
@@ -144,9 +139,6 @@ void compression()
                 }
             }
         }
-        // if (consecutiveMismatchEncoding.size() != 0)
-        // {
-        // }
     }
 
     cout << "";
