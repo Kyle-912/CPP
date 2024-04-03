@@ -58,16 +58,16 @@ void decompression()
     if (file.is_open())
     {
         string line;
-        bool startStoring = false;
+        bool isDictionary = false;
         while (getline(file, line))
         {
             if (line == "xxxx")
             {
-                startStoring = true; // Set the flag to true after reading "xxxx"
+                isDictionary = true; // Set the flag to true after reading "xxxx"
                 continue;            // Skip storing "xxxx" in the vector
             }
 
-            if (startStoring)
+            if (isDictionary)
             {
                 instructions.push_back(line); // Store lines to the vector
             }
