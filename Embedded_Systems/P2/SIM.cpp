@@ -56,12 +56,12 @@ void compression()
             if (instructions[i] == dictionaryEntries[j])
             {
                 // Replace instruction with 4-bit representation of index
-                string indexRepresentation = "111";
+                string directMatch = "111";
                 for (int k = 3; k >= 0; --k)
                 {
-                    indexRepresentation += ((j >> k) & 1) ? '1' : '0';
+                    directMatch += ((j >> k) & 1) ? '1' : '0';
                 }
-                instructions[i] = indexRepresentation;
+                instructions[i] = directMatch;
                 break; // Move to the next instruction
             }
         }
