@@ -81,7 +81,6 @@ void compression()
 
         for (size_t j = 0; j < dictionaryEntries.size(); ++j)
         {
-
             const string &dict = dictionaryEntries[j];
             int consecutiveMismatchCount = 0;
             int totalMismatchCount = 0;
@@ -91,7 +90,7 @@ void compression()
             {
                 cout << "";
             }
-            
+
             for (size_t k = 0; k < instr.size(); ++k)
             {
                 if (instr[k] != dict[k])
