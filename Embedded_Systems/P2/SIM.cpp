@@ -35,11 +35,11 @@ void compression()
 
     if (file.is_open())
     {
-        string row;
-        while (getline(file, row))
+        string instruction;
+        while (getline(file, instruction))
         {
-            // Store the row in the vector
-            instructions.push_back(row);
+            // Store the instruction in the vector
+            instructions.push_back(instruction);
         }
 
         // Close the file
