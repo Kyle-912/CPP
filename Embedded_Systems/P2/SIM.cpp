@@ -27,7 +27,6 @@ int main(int argc, char *argv[])
 
 void compression()
 {
-
     ifstream file("original.txt");
 
     if (file.is_open())
