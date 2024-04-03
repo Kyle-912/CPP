@@ -49,7 +49,18 @@ void compression()
         dictionaryEntries.push_back(countsVector[i].second);
     }
 
-    
+    for (size_t i = 0; i < instructions.size(); ++i)
+    {
+        for (size_t j = 0; j < dictionaryEntries.size(); ++j)
+        {
+            if (instructions[i] == dictionaryEntries[j])
+            {
+                // Replace instruction with 4-bit representation of index
+                instructions[i] = to_string(j); // Assuming the index fits within 4 bits
+                break;                          // Move to the next instruction
+            }
+        }
+    }
 
     cout << "";
 }
