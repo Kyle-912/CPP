@@ -80,7 +80,7 @@ void compression()
         }
         if (i == 41)
         {
-            /* code */
+            cout << "";
         }
 
 
