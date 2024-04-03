@@ -210,25 +210,39 @@ void compression()
         {
             const string &dict = dictionaryEntries[j];
 
-            // Check for bitmask compression
+            // Iterate through every possible start location for applying the bitmask
             for (size_t start = 0; start <= 28; ++start)
             {
-                int mask = 0;
-                for (size_t k = 0; k < 4; ++k)
+                // Iterate through every possible 4-bit bitmask
+                for (int mask = 1; mask <= 15; ++mask)
                 {
-                    if (instr[start + k] != dict[start + k])
+                    string compressedInstruction = ""; // Reset the compressed instruction for each bitmask
+
+                    // Apply the bitmask to the instruction
+                    for (size_t k = 0; k < 4; ++k)
                     {
-                        mask |= (1 << k);
+                        if (instr[start + k] != dict[start + k])
+                        {
+                            // XOR operation to apply the bitmask
+                            compressedInstruction += (mask & (1 << k)) ? '1' : '0';
+                        }
+                        else
+                        {
+                            // If the bits already match, keep them unchanged
+                            compressedInstruction += instr[start + k];
+                        }
                     }
-                }
-                if ((mask & (~0)) == mask && (mask & (1 << 3)) != 0)
-                {
-                    // Found a valid bitmask with the first bit set to 1
-                    encodedInstruction = "010";
-                    encodedInstruction += bitset<5>(start).to_string();
-                    encodedInstruction += bitset<4>(mask).to_string();
-                    encodedInstruction += bitset<4>(j).to_string();
-                    break;
+
+                    // Check if the compressed instruction matches the dictionary entry
+                    if (compressedInstruction == dict.substr(start, 4))
+                    {
+                        // Store the compressed instruction
+                        encodedInstruction = "010";
+                        encodedInstruction += bitset<5>(start).to_string();
+                        encodedInstruction += bitset<4>(mask).to_string();
+                        encodedInstruction += bitset<4>(j).to_string();
+                        break; // Exit the loop since the instruction is compressed
+                    }
                 }
             }
         }
