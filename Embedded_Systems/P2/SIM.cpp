@@ -73,82 +73,76 @@ void compression()
     {
         const string &instr = instructions[i];
         string consecutiveMismatchEncoding = "";
-
         if (instructions[i].size() != 32)
         {
-            continue; // Skip instructions that are not 32 bits
+            continue;
         }
-
-        bool foundMismatch = false;       // Flag to track if any mismatch is found
-        int consecutiveMismatchCount = 0; // Count of consecutive mismatches
-        int totalMismatchCount = 0;       // Total count of mismatches
-
-        size_t longestMismatchStartIndex = 0; // Index of the start of longest consecutive mismatch
-
         for (size_t j = 0; j < dictionaryEntries.size(); ++j)
         {
             const string &dict = dictionaryEntries[j];
-
+            int consecutiveMismatchCount = 0;
+            int totalMismatchCount = 0;
+            size_t longestMismatchStartIndex = 0;
+            if (i == instructions.size() - 1 && j == 15)
+            {
+                cout << "";
+            }
             for (size_t k = 0; k < instr.size(); ++k)
             {
+                if (k == 29)
+                {
+                    cout << "";
+                }
+
                 if (instr[k] != dict[k])
                 {
-                    // Increment total mismatch count
-                    totalMismatchCount++;
+                    ++consecutiveMismatchCount;
+                    ++totalMismatchCount;
 
-                    // Increment consecutive mismatch count
-                    consecutiveMismatchCount++;
-
-                    // Update the index of the start of the longest consecutive mismatch
+                    if (consecutiveMismatchCount > 4 || totalMismatchCount != consecutiveMismatchCount)
+                    {
+                        consecutiveMismatchEncoding = "";
+                        break;
+                    }
                     if (consecutiveMismatchCount == 1)
                     {
                         longestMismatchStartIndex = k;
                     }
-
-                    // Check if more than 4 consecutive mismatches or total mismatches are greater than consecutive mismatches
-                    if (consecutiveMismatchCount > 4 || totalMismatchCount != consecutiveMismatchCount)
-                    {
-                        // Reset consecutive mismatch count
-                        consecutiveMismatchCount = 0;
-                        break;
-                    }
-
-                    // Check for consecutive mismatches of length 1, 2, or 4
-                    if (consecutiveMismatchCount == 1 || consecutiveMismatchCount == 2 || consecutiveMismatchCount == 4)
-                    {
-                        // Encode consecutive mismatch
-                        if (consecutiveMismatchCount == 1)
-                        {
-                            consecutiveMismatchEncoding = "011";
-                        }
-                        else if (consecutiveMismatchCount == 2)
-                        {
-                            consecutiveMismatchEncoding = "100";
-                        }
-                        else if (consecutiveMismatchCount == 4)
-                        {
-                            consecutiveMismatchEncoding = "101";
-                        }
-
-                        // Add index of the start of the longest consecutive mismatch and dictionary entry index to the encoding
-                        consecutiveMismatchEncoding += bitset<5>(longestMismatchStartIndex).to_string();
-                        consecutiveMismatchEncoding += bitset<4>(j).to_string();
-
-                        // Set foundMismatch flag to true
-                        foundMismatch = true;
-                        break;
-                    }
                 }
                 else
                 {
-                    // Reset consecutive mismatch count
                     consecutiveMismatchCount = 0;
                 }
-            }
-            if (foundMismatch)
-            {
-                instructions[i] = consecutiveMismatchEncoding; // Update instruction if mismatch found
-                break;
+
+                if (consecutiveMismatchCount > 0)
+                {
+                    if (consecutiveMismatchCount == 1)
+                    {
+                        // Single-bit mismatch
+                        consecutiveMismatchEncoding = "011";
+                    }
+                    else if (consecutiveMismatchCount == 2)
+                    {
+                        // Two-bit consecutive mismatch
+                        consecutiveMismatchEncoding = "100";
+                    }
+                    else if (consecutiveMismatchCount == 4)
+                    {
+                        // Four-bit consecutive mismatch
+                        consecutiveMismatchEncoding = "101";
+                    }
+                    else
+                    {
+                        consecutiveMismatchEncoding = "";
+                        break;
+                    }
+                    consecutiveMismatchEncoding += bitset<5>(longestMismatchStartIndex).to_string();
+                    consecutiveMismatchEncoding += bitset<4>(j).to_string();
+                }
+                if (k == 31)
+                {
+                    instructions[i] = consecutiveMismatchEncoding;
+                }
             }
         }
     }
