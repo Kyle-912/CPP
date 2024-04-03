@@ -69,10 +69,7 @@ void decompression()
         file.close();
 
         cout << "Contents of compressed.txt:" << endl;
-        for (const auto &r : instructions)
-        {
-            cout << r << endl;
-        }
+        cout << compressedInstructions << endl;
         cout << "xxxx" << endl;
         for (const auto &r : dictionary)
         {
