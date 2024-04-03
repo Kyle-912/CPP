@@ -77,6 +77,7 @@ void compression()
             const string &dict = dictionaryEntries[j];
             int mismatchCount = 0;
             int consecutiveMismatchCount = 0;
+            int totalMismatchCount = 0;
             size_t mismatchStartIndex = 0;
             string mismatchEncoding;
 
