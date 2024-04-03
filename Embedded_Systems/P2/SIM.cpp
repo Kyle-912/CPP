@@ -141,8 +141,8 @@ void compression()
         }
     }
 
-    // 2 Anywhere Mismatches Handling
-
+    // 2 Mismatches Anywhere Handling
+    
 
     cout << "";
 }
