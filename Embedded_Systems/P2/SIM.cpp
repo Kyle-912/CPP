@@ -95,7 +95,7 @@ void compression()
                         // Start of consecutive mismatches
                         longestMismatchStartIndex = k;
                     }
-                    if (consecutiveMismatchCount > 4 || (k > 0 && instr[k - 1] != dict[k - 1]))
+                    if (consecutiveMismatchCount > 4 || totalMismatchCount != consecutiveMismatchCount)
                     {
                         // Non-consecutive mismatch or more than 4 consecutive mismatches
                         break;
