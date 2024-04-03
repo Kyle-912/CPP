@@ -27,7 +27,18 @@ int main(int argc, char *argv[])
     }
     else if (option == 2)
     {
-        cout << "Option 2 selected. World!" << endl;
+        ifstream file("original.txt"); // Open the file for reading
+
+        if (file.is_open())
+        {
+            cout << "Contents of original.txt:" << endl;
+            char c;
+            while (file.get(c)) // Read the file character by character
+            {
+                cout << c;
+            }
+            file.close(); // Close the file
+        }
     }
 
     return 0;
