@@ -76,6 +76,9 @@ void decompression()
             cout << r << endl;
         }
         cout << "xxxx" << endl;
-        
+        for (const auto &r : dictionary)
+        {
+            cout << r << endl;
+        }
     }
 }
