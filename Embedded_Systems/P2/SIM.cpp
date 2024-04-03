@@ -114,6 +114,7 @@ int main(int argc, char *argv[])
 }
 
 /* Heirarchy:
+    RLE
     Direct Match
     
 */
