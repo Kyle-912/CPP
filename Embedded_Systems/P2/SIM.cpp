@@ -31,14 +31,11 @@ void compression()
     }
 
     unordered_map<string, int> counts;
-
-    // Count occurrences of each string
     for (const string &instruction : instructions)
     {
         counts[instruction]++;
     }
 
-    // Create a vector of pairs to store the counts and strings
     vector<pair<int, string>> countStringPairs;
 
     // Populate the vector of pairs
