@@ -64,7 +64,7 @@ void decompression()
             {
                 break;
             }
-            compressedInstructions += line; // Concatenate each line to compressedInstructions
+            compressedInstructions += line;
         }
 
         file.close();
