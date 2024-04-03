@@ -55,14 +55,13 @@ void compression()
         {
             if (instructions[i] == dictionaryEntries[j])
             {
-                // Replace instruction with 4-bit representation of index
                 string directMatch = "111";
                 for (int k = 3; k >= 0; --k)
                 {
                     directMatch += ((j >> k) & 1) ? '1' : '0';
                 }
                 instructions[i] = directMatch;
-                break; // Move to the next instruction
+                break;
             }
         }
     }
