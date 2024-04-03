@@ -75,7 +75,6 @@ void compression()
         for (size_t j = 0; j < dictionaryEntries.size(); ++j)
         {
             const string &dict = dictionaryEntries[j];
-            int currentMismatchCount = 0;
             int consecutiveMismatchCount = 0;
             int totalMismatchCount = 0;
             size_t longestMismatchStartIndex = 0;
@@ -85,57 +84,63 @@ void compression()
             {
                 if (instr[k] != dict[k])
                 {
-                    ++currentMismatchCount;
                     ++consecutiveMismatchCount;
-                    if (currentMismatchCount > 4) //FIXME:
-                    {
-                        // Non-consecutive mismatch or more than 4 consecutive mismatches
-                        break;
-                    }
-                    if (consecutiveMismatchCount == 0)
+                    ++totalMismatchCount;
+                    if (consecutiveMismatchCount == 1)
                     {
                         // Start of consecutive mismatches
                         longestMismatchStartIndex = k;
                     }
-                }
-                else if (consecutiveMismatchCount > 0)
-                {
-                    // End of consecutive mismatches
-                    if (consecutiveMismatchCount == 1)
+                    if (consecutiveMismatchCount > 4 || (k > 0 && instr[k - 1] != dict[k - 1]))
                     {
-                        // Single-bit mismatch
-                        consecutiveMismatchEncoding = "011";
-                    }
-                    else if (consecutiveMismatchCount == 2)
-                    {
-                        // Two-bit consecutive mismatch
-                        consecutiveMismatchEncoding = "100";
-                    }
-                    else if (consecutiveMismatchCount == 4)
-                    {
-                        // Four-bit consecutive mismatch
-                        consecutiveMismatchEncoding = "101";
-                    }
-                    else
-                    {
-                        // More than four consecutive mismatches, handled as a bitmask
+                        // Non-consecutive mismatch or more than 4 consecutive mismatches
                         break;
                     }
-
-                    // Encode mismatch
-                    consecutiveMismatchEncoding += bitset<5>(longestMismatchStartIndex).to_string();
-                    consecutiveMismatchEncoding += bitset<4>(j).to_string();
-                    instructions[i] = consecutiveMismatchEncoding;
-                    break;
                 }
                 else
                 {
-                    // No mismatch
-                    currentMismatchCount = 0;
+                    // End of consecutive mismatches
+                    if (consecutiveMismatchCount > 0)
+                    {
+                        if (consecutiveMismatchCount == 1)
+                        {
+                            // Single-bit mismatch
+                            consecutiveMismatchEncoding = "011";
+                        }
+                        else if (consecutiveMismatchCount == 2)
+                        {
+                            // Two-bit consecutive mismatch
+                            consecutiveMismatchEncoding = "100";
+                        }
+                        else if (consecutiveMismatchCount == 4)
+                        {
+                            // Four-bit consecutive mismatch
+                            consecutiveMismatchEncoding = "101";
+                        }
+                        else
+                        {
+                            // More than four consecutive mismatches, handled as a bitmask
+                            break;
+                        }
+
+                        // Encode mismatch
+                        consecutiveMismatchEncoding += bitset<5>(longestMismatchStartIndex).to_string();
+                        consecutiveMismatchEncoding += bitset<4>(j).to_string();
+                        instructions[i] = consecutiveMismatchEncoding;
+                        break;
+                    }
+                    consecutiveMismatchCount = 0; // Reset consecutive mismatch count
                 }
+            }
+            if (totalMismatchCount <= 4)
+            {
+                // Handle the case of a non-consecutive mismatch
+                // Continue checking for other dictionary entries
+                break;
             }
         }
     }
+
     cout << "";
 }
 
