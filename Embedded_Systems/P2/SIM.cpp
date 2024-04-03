@@ -34,8 +34,7 @@ void compression()
     unordered_map<string, int> counts;
 
     // Count occurrences of each string
-    for (const string &instruction : instructions)
-    {
+    for (const string& instruction : instructions) {
         counts[instruction]++;
     }
 
@@ -43,8 +42,7 @@ void compression()
     vector<pair<int, string>> countStringPairs;
 
     // Populate the vector of pairs
-    for (const auto &pair : counts)
-    {
+    for (const auto& pair : counts) {
         countStringPairs.push_back(make_pair(pair.second, pair.first));
     }
 
@@ -53,8 +51,7 @@ void compression()
 
     // Extract the top 16 strings
     vector<string> top16Strings;
-    for (size_t i = 0; i < std::min<size_t>(16, countStringPairs.size()); ++i)
-    {
+    for (size_t i = 0; i < std::min<size_t>(16, countStringPairs.size()); ++i) {
         top16Strings.push_back(countStringPairs[i].second);
     }
 }
