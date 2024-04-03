@@ -86,6 +86,7 @@ void compression()
                     if (mismatchCount == 1)
                     {
                         mismatchLocation = -1; // More than 1 mismatch, skip
+                        mismatchCount = 0;
                         break;
                     }
                     mismatchCount++;
