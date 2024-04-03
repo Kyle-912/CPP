@@ -28,7 +28,7 @@ void compression()
         }
     }
 
-    
+
 }
 
 void decompression()
@@ -86,6 +86,7 @@ int main(int argc, char *argv[])
 
     case 2:
         decompression();
+        break;
     }
 
     return 0;
