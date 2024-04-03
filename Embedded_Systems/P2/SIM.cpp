@@ -83,13 +83,13 @@ void compression()
             int consecutiveMismatchCount = 0;
             int totalMismatchCount = 0;
             size_t longestMismatchStartIndex = 0;
-            if (i == instructions.size() - 1)
+            if (i == instructions.size() - 1 && j == 15)
             {
                 cout << "";
             }
             for (size_t k = 0; k < instr.size(); ++k)
             {
-                if (k == instr.size() - 1)
+                if (k == 31)
                 {
                     cout << "";
                 }
@@ -109,35 +109,32 @@ void compression()
                         longestMismatchStartIndex = k;
                     }
                 }
-                else
+                if (consecutiveMismatchCount > 0)
                 {
-                    if (consecutiveMismatchCount > 0)
+                    if (consecutiveMismatchCount == 1)
                     {
-                        if (consecutiveMismatchCount == 1)
-                        {
-                            // Single-bit mismatch
-                            consecutiveMismatchEncoding = "011";
-                        }
-                        else if (consecutiveMismatchCount == 2)
-                        {
-                            // Two-bit consecutive mismatch
-                            consecutiveMismatchEncoding = "100";
-                        }
-                        else if (consecutiveMismatchCount == 4)
-                        {
-                            // Four-bit consecutive mismatch
-                            consecutiveMismatchEncoding = "101";
-                        }
-                        else
-                        {
-                            consecutiveMismatchEncoding = "";
-                            break;
-                        }
-                        consecutiveMismatchEncoding += bitset<5>(longestMismatchStartIndex).to_string();
-                        consecutiveMismatchEncoding += bitset<4>(j).to_string();
+                        // Single-bit mismatch
+                        consecutiveMismatchEncoding = "011";
                     }
-                    consecutiveMismatchCount = 0;
+                    else if (consecutiveMismatchCount == 2)
+                    {
+                        // Two-bit consecutive mismatch
+                        consecutiveMismatchEncoding = "100";
+                    }
+                    else if (consecutiveMismatchCount == 4)
+                    {
+                        // Four-bit consecutive mismatch
+                        consecutiveMismatchEncoding = "101";
+                    }
+                    else
+                    {
+                        consecutiveMismatchEncoding = "";
+                        break;
+                    }
+                    consecutiveMismatchEncoding += bitset<5>(longestMismatchStartIndex).to_string();
+                    consecutiveMismatchEncoding += bitset<4>(j).to_string();
                 }
+                consecutiveMismatchCount = 0;
                 if (k == 31)
                 {
                     instructions[i] = consecutiveMismatchEncoding;
