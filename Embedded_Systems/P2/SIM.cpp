@@ -449,6 +449,7 @@ void decompression()
                 {
                     string index = data.substr(0, 4);
                     outFile << dictionary[stoi(index)] << endl;
+                    previousInstruction = dictionary[stoi(index)];
                 }
             }
             outFile.close();
