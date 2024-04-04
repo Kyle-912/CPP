@@ -270,42 +270,38 @@ void compression()
     }
 
     // RLE Handling
-    string currentInstruction = instructions[0]; // Initialize current instruction
-    int consecutiveCount = 1;                    // Initialize consecutive count
-
-    for (size_t i = 1; i < instructions.size(); ++i)
+    for (size_t i = 0; i < instructions.size();)
     {
-        if (instructions[i] == currentInstruction)
+        string instruction = instructions[i];
+        int consecutiveRepetitions = 1;
+
+        // Check for consecutive repetitions
+        while (i + consecutiveRepetitions < instructions.size() && instructions[i + consecutiveRepetitions] == instruction && consecutiveRepetitions < 8)
         {
-            // Increase consecutive count if instruction is the same as the previous one
-            consecutiveCount++;
+            ++consecutiveRepetitions;
+        }
+
+        // Compress instructions using RLE
+        if (consecutiveRepetitions > 1)
+        {
+            // Add the first instruction to the compressed instructions
+            compressedInstructions.push_back(instruction);
+
+            // Calculate RLE count (3 bits)
+            int rleCount = consecutiveRepetitions - 1;
+            string rleEncoding = "001" + bitset<3>(rleCount).to_string();
+            compressedInstructions.push_back(rleEncoding);
+
+            // Move to the next set of instructions
+            i += consecutiveRepetitions;
         }
         else
         {
-            // Add the current instruction
-            compressedInstructions.push_back(currentInstruction);
-
-            // If consecutive repetitions were found, apply RLE compression
-            if (consecutiveCount > 1)
-            {
-                // Apply RLE compression for up to 8 repetitions
-                while (consecutiveCount > 0)
-                {
-                    string rleEncodedInstruction = "001";                                         // Start with RLE indicator
-                    int rleCount = min(consecutiveCount, 8);                                      // Calculate RLE count
-                    rleEncodedInstruction += bitset<3>(rleCount - 1).to_string();                 // Add RLE count as 3 bits
-                    compressedInstructions.push_back(rleEncodedInstruction + currentInstruction); // Store RLE compressed instruction
-                    consecutiveCount -= min(consecutiveCount, 8);                                 // Update consecutive count
-                }
-            }
-            // Update current instruction and reset consecutive count
-            currentInstruction = instructions[i];
-            consecutiveCount = 1;
+            // No consecutive repetitions found, add the instruction directly
+            compressedInstructions.push_back(instruction);
+            ++i;
         }
     }
-
-    // Add the last instruction
-    compressedInstructions.push_back(currentInstruction);
 
     cout << "";
 }
