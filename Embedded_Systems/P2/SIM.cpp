@@ -423,6 +423,10 @@ void decompression()
                     string location1 = data.substr(0, 5);
                     string location2 = data.substr(5, 5);
                     string index = data.substr(10, 4);
+                    string modifiedEntry = dictionary[stoi(index)];
+                    modifiedEntry[stoi(location1)] = (modifiedEntry[stoi(location1)] == '0') ? '1' : '0';
+                    modifiedEntry[stoi(location2)] = (modifiedEntry[stoi(location2)] == '0') ? '1' : '0';
+                    outFile << modifiedEntry << endl;
                 }
                 else if (code == "111")
                 {
