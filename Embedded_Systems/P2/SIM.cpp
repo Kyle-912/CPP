@@ -374,13 +374,29 @@ void decompression()
             index += numBits;
 
             if (code == "000")
+            {
                 numBits = 32;
+            }
             else if (code == "001")
+            {
                 numBits = 3;
+            }
             else if (code == "010")
+            {
                 numBits = 13;
-            else if (code == "011" || code == "100" || code == "101")
-                numBits = 9;
+            }
+            else if (code == "011")
+            {
+
+            } else if (code == "100")
+            {
+
+            }
+            else if (code == "101")
+            {
+                
+            }
+
             else if (code == "110")
                 numBits = 14;
             else if (code == "111")
