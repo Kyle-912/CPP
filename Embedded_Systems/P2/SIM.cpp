@@ -289,7 +289,7 @@ void compression()
 
             // Calculate RLE count (3 bits)
             int rleCount = consecutiveRepetitions - 1;
-            string rleEncoding = "001" + bitset<3>(min(7, rleCount)).to_string(); // Limit the RLE count to 7
+            string rleEncoding = "001" + bitset<3>(min(7, rleCount - 1)).to_string(); // Adjust RLE count by 1
             compressedInstructions.push_back(rleEncoding);
 
             // Move to the next set of instructions
