@@ -388,7 +388,7 @@ void decompression()
                 {
                     string location = data.substr(0, 5);
                     string bitmask = data.substr(5, 4);
-                    string index = data.substr(9, 4); //TODO:
+                    string index = data.substr(9, 4);
                 }
                 else if (code == "011")
                 {
