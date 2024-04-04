@@ -306,6 +306,11 @@ void compression()
             allInstructions += instruction;
         }
 
+        // Calculate the number of characters needed to pad the last line
+        size_t padding = 32 - (allInstructions.size() % 32);
+        // Pad the last line with zeros
+        allInstructions += string(padding, '0');
+
         // Write the instructions to the file, 32 characters at a time
         for (size_t i = 0; i < allInstructions.size(); i += 32)
         {
