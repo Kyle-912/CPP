@@ -392,19 +392,19 @@ void decompression()
                 }
                 else if (code == "011")
                 {
-
+                    string location = data.substr(0, 5);
                 }
                 else if (code == "100")
                 {
-
+                    string location = data.substr(0, 5);
                 }
                 else if (code == "101")
                 {
-
+                    string location = data.substr(0, 5);
                 }
                 else if (code == "110")
                 {
-
+                    string location = data.substr(0, 5);
                 }
                 else if (code == "111")
                 {
