@@ -353,10 +353,8 @@ void decompression()
         int index = 0;
         while (index < compressedInstructions.length())
         {
-            // Read the next 3 characters
             string code = compressedInstructions.substr(index, 3);
 
-            // Determine the number of bits to read next based on the code
             int numBits = 0;
             if (code == "000")
                 numBits = 32;
