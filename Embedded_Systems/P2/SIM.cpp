@@ -394,13 +394,16 @@ void decompression()
             }
             else if (code == "101")
             {
-                
-            }
 
+            }
             else if (code == "110")
+            {
                 numBits = 14;
+            }
             else if (code == "111")
+            {
                 numBits = 4;
+            }
         }
 
         cout << "";
