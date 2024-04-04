@@ -14,6 +14,7 @@ void compression()
 {
     vector<string> instructions;
     vector<string> dictionaryEntries;
+    vector<string> compressedInstructions;
 
     ifstream file("original.txt");
     if (file.is_open())
@@ -260,7 +261,7 @@ void compression()
     }
 
     // RLE Handling
-    
+
 
     cout << "";
 }
