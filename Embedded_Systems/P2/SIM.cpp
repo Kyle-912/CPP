@@ -382,11 +382,11 @@ void decompression()
                 }
                 else if (code == "001")
                 {
-                    
+
                 }
                 else if (code == "010")
                 {
-
+                    string startingLocation = data.substr(0,4);
                 }
                 else if (code == "011")
                 {
