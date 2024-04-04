@@ -297,8 +297,8 @@ void compression()
         }
     }
 
-    ofstream outputFile("cout.txt");
-    if (outputFile.is_open())
+    ofstream outFile("cout.txt");
+    if (outFile.is_open())
     {
         string allInstructions = "";
         for (const string &instruction : compressedInstructions)
@@ -316,16 +316,16 @@ void compression()
         {
             string chunk = allInstructions.substr(i, 32);
             // Write the chunk to the file
-            outputFile << chunk << endl;
+            outFile << chunk << endl;
         }
-        outputFile << "xxxx" << endl;
+        outFile << "xxxx" << endl;
 
         // Write each dictionary entry to a separate line
         for (const string &entry : dictionaryEntries)
         {
-            outputFile << entry << endl;
+            outFile << entry << endl;
         }
-        outputFile.close();
+        outFile.close();
     }
 
         cout << "";
