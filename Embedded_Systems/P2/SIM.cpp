@@ -353,10 +353,10 @@ void decompression()
         ofstream outFile("dout.txt");
         if (outFile.is_open())
         {
-            int index = 0;
-            while (index < compressedInstructions.length())
+            int ins = 0;
+            while (ins < compressedInstructions.length())
             {
-                string code = compressedInstructions.substr(index, 3);
+                string code = compressedInstructions.substr(ins, 3);
 
                 int numBits = 0;
                 if (code == "000")
@@ -372,9 +372,9 @@ void decompression()
                 else if (code == "111")
                     numBits = 4;
 
-                index += 3;
-                string data = compressedInstructions.substr(index, numBits);
-                index += numBits;
+                ins += 3;
+                string data = compressedInstructions.substr(ins, numBits);
+                ins += numBits;
 
                 if (code == "000")
                 {
@@ -388,7 +388,7 @@ void decompression()
                 {
                     string startingLocation = data.substr(0,5);
                     string bitmask = data.substr(5, 4);
-                    // string index = 
+                    // string index =
                     cout << "";
                 }
                 else if (code == "011")
