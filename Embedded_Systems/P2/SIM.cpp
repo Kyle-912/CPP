@@ -305,17 +305,14 @@ void compression()
         {
             allInstructions += instruction;
         }
-
         size_t padding = 32 - (allInstructions.size() % 32);
         allInstructions += string(padding, '0');
-
         for (size_t i = 0; i < allInstructions.size(); i += 32)
         {
             string chunk = allInstructions.substr(i, 32);
             outFile << chunk << endl;
         }
         outFile << "xxxx" << endl;
-
         for (const string &entry : dictionaryEntries)
         {
             outFile << entry << endl;
