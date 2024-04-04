@@ -276,7 +276,7 @@ void compression()
         int consecutiveRepetitions = 1;
 
         // Check for consecutive repetitions
-        while (i + consecutiveRepetitions < instructions.size() && instructions[i + consecutiveRepetitions] == instruction && consecutiveRepetitions < 8)
+        while (i + consecutiveRepetitions < instructions.size() && instructions[i + consecutiveRepetitions] == instruction && consecutiveRepetitions < 9)
         {
             ++consecutiveRepetitions;
         }
@@ -289,7 +289,7 @@ void compression()
 
             // Calculate RLE count (3 bits)
             int rleCount = consecutiveRepetitions - 1;
-            string rleEncoding = "001" + bitset<3>(rleCount).to_string();
+            string rleEncoding = "001" + bitset<3>(min(7, rleCount)).to_string(); // Limit the RLE count to 7
             compressedInstructions.push_back(rleEncoding);
 
             // Move to the next set of instructions
