@@ -261,10 +261,16 @@ void compression()
     }
 
     // Original Binaries Handling
-    
+    for (size_t i = 0; i < instructions.size(); ++i)
+    {
+        if (instructions[i].size())
+        {
+            /* code */
+        }
+
+    }
 
     // RLE Handling
-
 
     cout << "";
 }
