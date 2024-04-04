@@ -16,15 +16,15 @@ void compression()
     vector<string> dictionaryEntries;
     vector<string> compressedInstructions;
 
-    ifstream file("original.txt");
-    if (file.is_open())
+    ifstream inFile("original.txt");
+    if (inFile.is_open())
     {
         string instruction;
-        while (getline(file, instruction))
+        while (getline(inFile, instruction))
         {
             instructions.push_back(instruction);
         }
-        file.close();
+        inFile.close();
     }
 
     unordered_map<string, int> counts;
