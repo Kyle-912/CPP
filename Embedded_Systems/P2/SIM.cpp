@@ -378,32 +378,35 @@ void decompression()
 
                 if (code == "000")
                 {
-                    numBits = 32;
+                    
                 }
                 else if (code == "001")
                 {
-                    numBits = 3;
+
                 }
                 else if (code == "010")
                 {
-                    numBits = 13;
+
                 }
                 else if (code == "011")
                 {
+
                 }
                 else if (code == "100")
                 {
+
                 }
                 else if (code == "101")
                 {
+
                 }
                 else if (code == "110")
                 {
-                    numBits = 14;
+
                 }
                 else if (code == "111")
                 {
-                    numBits = 4;
+
                 }
             }
             outFile.close();
