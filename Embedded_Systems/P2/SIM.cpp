@@ -302,10 +302,12 @@ void compression()
     {
         for (const string &instruction : compressedInstructions)
         {
-            // Split instruction into chunks of 32 characters
-            for (size_t i = 0; i < instruction.size(); i += 32)
+            // Pad instruction with zeros if its length is less than 32 characters
+            string paddedInstruction = instruction + string(32 - instruction.size(), '0');
+            // Write the padded instruction to the file
+            for (size_t i = 0; i < paddedInstruction.size(); i += 32)
             {
-                string chunk = instruction.substr(i, 32);
+                string chunk = paddedInstruction.substr(i, 32);
                 // Write the chunk to the file
                 outputFile << chunk << endl;
             }
