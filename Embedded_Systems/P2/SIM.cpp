@@ -326,12 +326,12 @@ void decompression()
     string compressedInstructions;
     vector<string> dictionary;
 
-    ifstream file("compressed.txt");
-    if (file.is_open())
+    ifstream inFile("compressed.txt");
+    if (inFile.is_open())
     {
         string line;
         bool isDictionary = false;
-        while (getline(file, line))
+        while (getline(inFile, line))
         {
             if (line == "xxxx")
             {
@@ -348,7 +348,7 @@ void decompression()
                 compressedInstructions += line;
             }
         }
-        file.close();
+        inFile.close();
 
         cout << "Contents of compressed.txt:" << endl;
         for (size_t i = 0; i < compressedInstructions.length(); i += 32)
