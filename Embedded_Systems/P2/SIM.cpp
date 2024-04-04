@@ -394,23 +394,29 @@ void decompression()
                 {
                     string location = data.substr(0, 5);
                     string index = data.substr(5, 4);
-                    dictionary[stoi(index)][stoi(location)] = (dictionary[stoi(index)][stoi(location)] == '0') ? '1' : '0';
+                    string modifiedEntry = dictionary[stoi(index)];
+                    modifiedEntry[stoi(location)] = (modifiedEntry[stoi(location)] == '0') ? '1' : '0';
+                    outFile << modifiedEntry << endl;
                 }
                 else if (code == "100")
                 {
                     string location = data.substr(0, 5);
                     string index = data.substr(5, 4);
-                    dictionary[stoi(index)][stoi(location)] = (dictionary[stoi(index)][stoi(location)] == '0') ? '1' : '0';
-                    dictionary[stoi(index)][stoi(location) + 1] = (dictionary[stoi(index)][stoi(location) + 1] == '0') ? '1' : '0';
+                    string modifiedEntry = dictionary[stoi(index)];
+                    modifiedEntry[stoi(location)] = (modifiedEntry[stoi(location)] == '0') ? '1' : '0';
+                    modifiedEntry[stoi(location) + 1] = (modifiedEntry[stoi(location) + 1] == '0') ? '1' : '0';
+                    outFile << modifiedEntry << endl;
                 }
                 else if (code == "101")
                 {
                     string location = data.substr(0, 5);
                     string index = data.substr(5, 4);
-                    dictionary[stoi(index)][stoi(location)] = (dictionary[stoi(index)][stoi(location)] == '0') ? '1' : '0';
-                    dictionary[stoi(index)][stoi(location) + 1] = (dictionary[stoi(index)][stoi(location) + 1] == '0') ? '1' : '0';
-                    dictionary[stoi(index)][stoi(location) + 2] = (dictionary[stoi(index)][stoi(location) + 2] == '0') ? '1' : '0';
-                    dictionary[stoi(index)][stoi(location) + 3] = (dictionary[stoi(index)][stoi(location) + 3] == '0') ? '1' : '0';
+                    string modifiedEntry = dictionary[stoi(index)];
+                    modifiedEntry[stoi(location)] = (modifiedEntry[stoi(location)] == '0') ? '1' : '0';
+                    modifiedEntry[stoi(location) + 1] = (modifiedEntry[stoi(location) + 1] == '0') ? '1' : '0';
+                    modifiedEntry[stoi(location) + 2] = (modifiedEntry[stoi(location) + 2] == '0') ? '1' : '0';
+                    modifiedEntry[stoi(location) + 3] = (modifiedEntry[stoi(location) + 3] == '0') ? '1' : '0';
+                    outFile << modifiedEntry << endl;
                 }
                 else if (code == "110")
                 {
