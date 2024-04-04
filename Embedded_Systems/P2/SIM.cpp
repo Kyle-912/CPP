@@ -263,11 +263,10 @@ void compression()
     // Original Binaries Handling
     for (size_t i = 0; i < instructions.size(); ++i)
     {
-        if (instructions[i].size())
+        if (instructions[i].size() == 32)
         {
-            /* code */
+            instructions[i] = "000" + instructions[i];
         }
-
     }
 
     // RLE Handling
