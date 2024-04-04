@@ -394,6 +394,7 @@ void decompression()
                 {
                     string location = data.substr(0, 5);
                     string index = data.substr(5, 4);
+                    
                 }
                 else if (code == "100")
                 {
