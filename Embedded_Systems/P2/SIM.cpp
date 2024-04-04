@@ -259,7 +259,8 @@ void compression()
         }
     }
 
-    //
+    // RLE Handling
+    
 
     cout << "";
 }
