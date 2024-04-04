@@ -292,8 +292,8 @@ void compression()
                 while (consecutiveCount > 0)
                 {
                     string rleEncodedInstruction = "001";                                         // Start with RLE indicator
-                    int rleCount = min(consecutiveCount, 8) - 1;                                  // Calculate RLE count excluding the first occurrence
-                    rleEncodedInstruction += bitset<3>(rleCount).to_string();                     // Add RLE count as 3 bits
+                    int rleCount = min(consecutiveCount, 8);                                      // Calculate RLE count
+                    rleEncodedInstruction += bitset<3>(rleCount - 1).to_string();                 // Add RLE count as 3 bits
                     compressedInstructions.push_back(rleEncodedInstruction + currentInstruction); // Store RLE compressed instruction
                     consecutiveCount -= min(consecutiveCount, 8);                                 // Update consecutive count
                 }
