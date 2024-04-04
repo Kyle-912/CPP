@@ -409,6 +409,7 @@ void decompression()
                 {
                     string location1 = data.substr(0, 5);
                     string location2 = data.substr(5, 5);
+                    string index = data.substr(10, 4);
                 }
                 else if (code == "111")
                 {
