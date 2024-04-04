@@ -411,7 +411,6 @@ void decompression()
                     modifiedEntry[stoi(location)] = (modifiedEntry[stoi(location)] == '0') ? '1' : '0';
                     outFile << modifiedEntry << endl;
                     previousInstruction = modifiedEntry;
-
                 }
                 else if (code == "100")
                 {
@@ -422,7 +421,6 @@ void decompression()
                     modifiedEntry[stoi(location) + 1] = (modifiedEntry[stoi(location) + 1] == '0') ? '1' : '0';
                     outFile << modifiedEntry << endl;
                     previousInstruction = modifiedEntry;
-
                 }
                 else if (code == "101")
                 {
@@ -434,6 +432,7 @@ void decompression()
                     modifiedEntry[stoi(location) + 2] = (modifiedEntry[stoi(location) + 2] == '0') ? '1' : '0';
                     modifiedEntry[stoi(location) + 3] = (modifiedEntry[stoi(location) + 3] == '0') ? '1' : '0';
                     outFile << modifiedEntry << endl;
+                    previousInstruction = modifiedEntry;
                 }
                 else if (code == "110")
                 {
@@ -444,6 +443,7 @@ void decompression()
                     modifiedEntry[stoi(location1)] = (modifiedEntry[stoi(location1)] == '0') ? '1' : '0';
                     modifiedEntry[stoi(location2)] = (modifiedEntry[stoi(location2)] == '0') ? '1' : '0';
                     outFile << modifiedEntry << endl;
+                    previousInstruction = modifiedEntry;
                 }
                 else if (code == "111")
                 {
