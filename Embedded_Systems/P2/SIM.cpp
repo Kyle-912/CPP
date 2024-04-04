@@ -396,9 +396,9 @@ void decompression()
                     string location = data.substr(0, 5);
                     string bitmask = data.substr(5, 4);
                     string index = data.substr(9, 4);
-                    string modifiedEntry = dictionary[stoi(index)];
+                    string modifiedEntry = dictionary[stoi(index, nullptr, 2)];
                     int mask = stoi(bitmask, nullptr, 2);
-                    modifiedEntry[stoi(location)] ^= mask;
+                    modifiedEntry[stoi(location, nullptr, 2)] ^= mask;
                     outFile << modifiedEntry << endl;
                     previousInstruction = modifiedEntry;
                 }
@@ -407,8 +407,8 @@ void decompression()
                 {
                     string location = data.substr(0, 5);
                     string index = data.substr(5, 4);
-                    string modifiedEntry = dictionary[stoi(index)];
-                    modifiedEntry[stoi(location)] = (modifiedEntry[stoi(location)] == '0') ? '1' : '0';
+                    string modifiedEntry = dictionary[stoi(index, nullptr, 2)];
+                    modifiedEntry[stoi(location, nullptr, 2)] = (modifiedEntry[stoi(location, nullptr, 2)] == '0') ? '1' : '0';
                     outFile << modifiedEntry << endl;
                     previousInstruction = modifiedEntry;
                 }
@@ -416,9 +416,9 @@ void decompression()
                 {
                     string location = data.substr(0, 5);
                     string index = data.substr(5, 4);
-                    string modifiedEntry = dictionary[stoi(index)];
-                    modifiedEntry[stoi(location)] = (modifiedEntry[stoi(location)] == '0') ? '1' : '0';
-                    modifiedEntry[stoi(location) + 1] = (modifiedEntry[stoi(location) + 1] == '0') ? '1' : '0';
+                    string modifiedEntry = dictionary[stoi(index, nullptr, 2)];
+                    modifiedEntry[stoi(location, nullptr, 2)] = (modifiedEntry[stoi(location, nullptr, 2)] == '0') ? '1' : '0';
+                    modifiedEntry[stoi(location, nullptr, 2) + 1] = (modifiedEntry[stoi(location, nullptr, 2) + 1] == '0') ? '1' : '0';
                     outFile << modifiedEntry << endl;
                     previousInstruction = modifiedEntry;
                 }
@@ -426,11 +426,11 @@ void decompression()
                 {
                     string location = data.substr(0, 5);
                     string index = data.substr(5, 4);
-                    string modifiedEntry = dictionary[stoi(index)];
-                    modifiedEntry[stoi(location)] = (modifiedEntry[stoi(location)] == '0') ? '1' : '0';
-                    modifiedEntry[stoi(location) + 1] = (modifiedEntry[stoi(location) + 1] == '0') ? '1' : '0';
-                    modifiedEntry[stoi(location) + 2] = (modifiedEntry[stoi(location) + 2] == '0') ? '1' : '0';
-                    modifiedEntry[stoi(location) + 3] = (modifiedEntry[stoi(location) + 3] == '0') ? '1' : '0';
+                    string modifiedEntry = dictionary[stoi(index, nullptr, 2)];
+                    modifiedEntry[stoi(location, nullptr, 2)] = (modifiedEntry[stoi(location, nullptr, 2)] == '0') ? '1' : '0';
+                    modifiedEntry[stoi(location, nullptr, 2) + 1] = (modifiedEntry[stoi(location, nullptr, 2) + 1] == '0') ? '1' : '0';
+                    modifiedEntry[stoi(location, nullptr, 2) + 2] = (modifiedEntry[stoi(location, nullptr, 2) + 2] == '0') ? '1' : '0';
+                    modifiedEntry[stoi(location, nullptr, 2) + 3] = (modifiedEntry[stoi(location, nullptr, 2) + 3] == '0') ? '1' : '0';
                     outFile << modifiedEntry << endl;
                     previousInstruction = modifiedEntry;
                 }
@@ -439,17 +439,17 @@ void decompression()
                     string location1 = data.substr(0, 5);
                     string location2 = data.substr(5, 5);
                     string index = data.substr(10, 4);
-                    string modifiedEntry = dictionary[stoi(index)];
-                    modifiedEntry[stoi(location1)] = (modifiedEntry[stoi(location1)] == '0') ? '1' : '0';
-                    modifiedEntry[stoi(location2)] = (modifiedEntry[stoi(location2)] == '0') ? '1' : '0';
+                    string modifiedEntry = dictionary[stoi(index, nullptr, 2)];
+                    modifiedEntry[stoi(location1, nullptr, 2)] = (modifiedEntry[stoi(location1, nullptr, 2)] == '0') ? '1' : '0';
+                    modifiedEntry[stoi(location2, nullptr, 2)] = (modifiedEntry[stoi(location2, nullptr, 2)] == '0') ? '1' : '0';
                     outFile << modifiedEntry << endl;
                     previousInstruction = modifiedEntry;
                 }
                 else if (code == "111")
                 {
                     string index = data.substr(0, 4);
-                    outFile << dictionary[stoi(index)] << endl;
-                    previousInstruction = dictionary[stoi(index)];
+                    outFile << dictionary[stoi(index, nullptr, 2)] << endl;
+                    previousInstruction = dictionary[stoi(index, nullptr, 2)];
                 }
             }
             outFile.close();
