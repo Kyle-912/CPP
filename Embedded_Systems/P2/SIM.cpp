@@ -408,7 +408,7 @@ void decompression()
                 }
                 else if (code == "111")
                 {
-                    string index = data.substr(9, 4);
+                    string index = data.substr(0, 4);
                 }
             }
             outFile.close();
