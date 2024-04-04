@@ -382,7 +382,7 @@ void decompression()
                 }
                 else if (code == "001")
                 {
-                    // TODO:
+                    string location = data.substr(0, 5);
                 }
                 else if (code == "010")
                 {
