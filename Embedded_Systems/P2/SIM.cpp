@@ -282,7 +282,10 @@ void compression()
         }
         else
         {
-            // If consecutive repetitions were found
+            // Add the current instruction
+            compressedInstructions.push_back(currentInstruction);
+
+            // If consecutive repetitions were found, apply RLE compression
             if (consecutiveCount > 1)
             {
                 // Apply RLE compression for up to 8 repetitions
@@ -295,34 +298,14 @@ void compression()
                     consecutiveCount -= min(consecutiveCount, 8);                                 // Update consecutive count
                 }
             }
-            else
-            {
-                // If no consecutive repetitions, add the current instruction as is
-                compressedInstructions.push_back(currentInstruction);
-            }
             // Update current instruction and reset consecutive count
             currentInstruction = instructions[i];
             consecutiveCount = 1;
         }
     }
 
-    // Handle the last instruction
-    if (consecutiveCount > 1)
-    {
-        // Apply RLE compression for up to 8 repetitions
-        while (consecutiveCount > 0)
-        {
-            string rleEncodedInstruction = "001";                                         // Start with RLE indicator
-            int rleCount = min(consecutiveCount, 8) - 1;                                  // Calculate RLE count excluding the first occurrence
-            rleEncodedInstruction += bitset<3>(rleCount).to_string();                     // Add RLE count as 3 bits
-            compressedInstructions.push_back(rleEncodedInstruction + currentInstruction); // Store RLE compressed instruction
-            consecutiveCount -= min(consecutiveCount, 8);                                 // Update consecutive count
-        }
-    }
-    else
-    {
-        compressedInstructions.push_back(currentInstruction);
-    }
+    // Add the last instruction
+    compressedInstructions.push_back(currentInstruction);
 
     cout << "";
 }
