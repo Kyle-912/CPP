@@ -350,6 +350,13 @@ void decompression()
         }
         inFile.close();
 
+        ofstream outFile("cout.txt");
+        if (outFile.is_open())
+        {
+            
+            outFile.close();
+        }
+
         int index = 0;
         while (index < compressedInstructions.length())
         {
