@@ -306,21 +306,16 @@ void compression()
             allInstructions += instruction;
         }
 
-        // Calculate the number of characters needed to pad the last line
         size_t padding = 32 - (allInstructions.size() % 32);
-        // Pad the last line with zeros
         allInstructions += string(padding, '0');
 
-        // Write the instructions to the file, 32 characters at a time
         for (size_t i = 0; i < allInstructions.size(); i += 32)
         {
             string chunk = allInstructions.substr(i, 32);
-            // Write the chunk to the file
             outFile << chunk << endl;
         }
         outFile << "xxxx" << endl;
 
-        // Write each dictionary entry to a separate line
         for (const string &entry : dictionaryEntries)
         {
             outFile << entry << endl;
