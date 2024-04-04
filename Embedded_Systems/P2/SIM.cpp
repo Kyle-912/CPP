@@ -351,9 +351,7 @@ void decompression()
         inFile.close();
 
         int index = 0;
-        int len = compressedInstructions.length();
-
-        while (index < len)
+        while (index < compressedInstructions.length())
         {
             // Read the next 3 characters
             string code = compressedInstructions.substr(index, 3);
