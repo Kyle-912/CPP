@@ -354,6 +354,7 @@ void decompression()
         if (outFile.is_open())
         {
             int ins = 0;
+            string previousInstruction;
             while (ins < compressedInstructions.length())
             {
                 string code = compressedInstructions.substr(ins, 3);
