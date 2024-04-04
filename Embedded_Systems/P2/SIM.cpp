@@ -382,7 +382,7 @@ void decompression()
                 }
                 else if (code == "001")
                 {
-
+                    
                 }
                 else if (code == "010")
                 {
