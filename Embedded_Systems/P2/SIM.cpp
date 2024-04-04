@@ -377,9 +377,6 @@ void decompression()
             // Read the next set of bits
             string nextBits = compressedInstructions.substr(index, numBits);
 
-            // Process the nextBits (this could be output or stored in a data structure, etc.)
-            cout << nextBits << " ";
-
             // Move the index to the next set of 3 characters
             index += numBits;
         }
