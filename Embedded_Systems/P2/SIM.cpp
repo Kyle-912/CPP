@@ -284,10 +284,10 @@ void compression()
             if (consecutiveCount > 1)
             {
                 // Apply RLE compression
-                string rleEncodedInstruction = "001";                                 // Start with RLE indicator
-                rleEncodedInstruction += bitset<3>(consecutiveCount - 1).to_string(); // Add RLE count
-                rleEncodedInstruction += currentInstruction;                          // Add compressed instruction
-                compressedInstructions.push_back(rleEncodedInstruction);              // Store RLE compressed instruction
+                string rleEncodedInstruction = "001";                                         // Start with RLE indicator
+                int rleCount = consecutiveCount - 1;                                          // Calculate RLE count excluding the first occurrence
+                rleEncodedInstruction += bitset<3>(rleCount).to_string();                     // Add RLE count as 3 bits
+                compressedInstructions.push_back(rleEncodedInstruction + currentInstruction); // Store RLE compressed instruction
             }
             else
             {
@@ -303,10 +303,10 @@ void compression()
     // Handle the last instruction
     if (consecutiveCount > 1)
     {
-        string rleEncodedInstruction = "001";                                 // Start with RLE indicator
-        rleEncodedInstruction += bitset<3>(consecutiveCount - 1).to_string(); // Add RLE count
-        rleEncodedInstruction += currentInstruction;                          // Add compressed instruction
-        compressedInstructions.push_back(rleEncodedInstruction);              // Store RLE compressed instruction
+        string rleEncodedInstruction = "001";                                         // Start with RLE indicator
+        int rleCount = consecutiveCount - 1;                                          // Calculate RLE count excluding the first occurrence
+        rleEncodedInstruction += bitset<3>(rleCount).to_string();                     // Add RLE count as 3 bits
+        compressedInstructions.push_back(rleEncodedInstruction + currentInstruction); // Store RLE compressed instruction
     }
     else
     {
