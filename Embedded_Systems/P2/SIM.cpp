@@ -350,16 +350,7 @@ void decompression()
         }
         inFile.close();
 
-        cout << "Contents of compressed.txt:" << endl;
-        for (size_t i = 0; i < compressedInstructions.length(); i += 32)
-        {
-            cout << compressedInstructions.substr(i, 32) << endl;
-        }
-        cout << "xxxx" << endl;
-        for (const auto &r : dictionary)
-        {
-            cout << r << endl;
-        }
+        cout << "";
     }
 }
 
