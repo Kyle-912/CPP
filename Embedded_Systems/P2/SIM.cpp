@@ -380,6 +380,7 @@ void decompression()
                 if (code == "000")
                 {
                     outFile << data << endl;
+                    outFile.flush();
                     previousInstruction = data;
                 }
                 else if (code == "001")
@@ -442,6 +443,7 @@ void decompression()
                     string modifiedEntry = dictionary[stoi(index, nullptr, 2)];
                     modifiedEntry[stoi(location1, nullptr, 2)] = (modifiedEntry[stoi(location1, nullptr, 2)] == '0') ? '1' : '0';
                     modifiedEntry[stoi(location2, nullptr, 2)] = (modifiedEntry[stoi(location2, nullptr, 2)] == '0') ? '1' : '0';
+                    cout << modifiedEntry << endl;
                     outFile << modifiedEntry << endl;
                     previousInstruction = modifiedEntry;
                 }
