@@ -300,17 +300,18 @@ void compression()
     ofstream outputFile("cout.txt");
     if (outputFile.is_open())
     {
+        string allInstructions = "";
         for (const string &instruction : compressedInstructions)
         {
-            // Pad instruction with zeros if its length is less than 32 characters
-            string paddedInstruction = instruction + string(32 - instruction.size(), '0');
-            // Write the padded instruction to the file
-            for (size_t i = 0; i < paddedInstruction.size(); i += 32)
-            {
-                string chunk = paddedInstruction.substr(i, 32);
-                // Write the chunk to the file
-                outputFile << chunk << endl;
-            }
+            allInstructions += instruction;
+        }
+
+        // Write the instructions to the file, 32 characters at a time
+        for (size_t i = 0; i < allInstructions.size(); i += 32)
+        {
+            string chunk = allInstructions.substr(i, 32);
+            // Write the chunk to the file
+            outputFile << chunk << endl;
         }
         outputFile.close();
     }
