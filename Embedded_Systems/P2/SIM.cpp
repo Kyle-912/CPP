@@ -270,7 +270,6 @@ void compression()
     }
 
     // RLE Handling
-    vector<string> rleCompressedInstructions;    // Temporary vector for storing RLE compressed instructions
     string currentInstruction = instructions[0]; // Initialize current instruction
     int consecutiveCount = 1;                    // Initialize consecutive count
     for (size_t i = 1; i < instructions.size(); ++i)
@@ -285,15 +284,15 @@ void compression()
             if (consecutiveCount > 1)
             {
                 // Apply RLE compression
-                string rleEncodedInstruction = "111";                                 // Start with RLE indicator
+                string rleEncodedInstruction = "001";                                 // Start with RLE indicator
                 rleEncodedInstruction += bitset<3>(consecutiveCount - 1).to_string(); // Add RLE count
                 rleEncodedInstruction += currentInstruction;                          // Add compressed instruction
-                rleCompressedInstructions.push_back(rleEncodedInstruction);           // Store RLE compressed instruction
+                compressedInstructions.push_back(rleEncodedInstruction);              // Store RLE compressed instruction
             }
             else
             {
                 // If no consecutive repetitions, add the current instruction as is
-                rleCompressedInstructions.push_back(currentInstruction);
+                compressedInstructions.push_back(currentInstruction);
             }
             // Reset consecutive count and update current instruction
             consecutiveCount = 1;
@@ -304,18 +303,15 @@ void compression()
     // Handle the last instruction
     if (consecutiveCount > 1)
     {
-        string rleEncodedInstruction = "111";                                 // Start with RLE indicator
+        string rleEncodedInstruction = "001";                                 // Start with RLE indicator
         rleEncodedInstruction += bitset<3>(consecutiveCount - 1).to_string(); // Add RLE count
         rleEncodedInstruction += currentInstruction;                          // Add compressed instruction
-        rleCompressedInstructions.push_back(rleEncodedInstruction);           // Store RLE compressed instruction
+        compressedInstructions.push_back(rleEncodedInstruction);              // Store RLE compressed instruction
     }
     else
     {
-        rleCompressedInstructions.push_back(currentInstruction);
+        compressedInstructions.push_back(currentInstruction);
     }
-
-    // Move RLE compressed instructions to final compressedInstructions vector
-    compressedInstructions.insert(compressedInstructions.end(), rleCompressedInstructions.begin(), rleCompressedInstructions.end());
 
     cout << "";
 }
