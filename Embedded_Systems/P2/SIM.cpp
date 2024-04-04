@@ -297,10 +297,24 @@ void compression()
         }
     }
 
-    
+    ofstream outputFile("cout.txt");
+    if (outputFile.is_open())
+    {
+        for (const string &instruction : compressedInstructions)
+        {
+            // Split instruction into chunks of 32 characters
+            for (size_t i = 0; i < instruction.size(); i += 32)
+            {
+                string chunk = instruction.substr(i, 32);
+                // Write the chunk to the file
+                outputFile << chunk << endl;
+            }
+        }
+        outputFile.close();
+    }
 
-    cout << "";
-}
+        cout << "";
+    }
 
 void decompression()
 {
