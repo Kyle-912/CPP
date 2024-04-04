@@ -369,10 +369,8 @@ void decompression()
             else if (code == "111")
                 numBits = 4;
 
-            // Move the index to read the next set of bits
             index += 3;
 
-            // Read the next set of bits
             string nextBits = compressedInstructions.substr(index, numBits);
 
             // Move the index to the next set of 3 characters
