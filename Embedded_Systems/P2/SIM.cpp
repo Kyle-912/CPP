@@ -386,7 +386,8 @@ void decompression()
                 }
                 else if (code == "010")
                 {
-                    string startingLocation = data.substr(0,4);
+                    string startingLocation = data.substr(0,5);
+                    
                     cout << "";
                 }
                 else if (code == "011")
