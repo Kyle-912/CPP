@@ -448,7 +448,7 @@ void decompression()
                 else if (code == "111")
                 {
                     string index = data.substr(0, 4);
-                    cout << dictionary[stoi(index)] << endl;
+                    string idx = dictionary[stoi(index)];
                     outFile << dictionary[stoi(index)] << endl;
                     previousInstruction = dictionary[stoi(index)];
                 }
