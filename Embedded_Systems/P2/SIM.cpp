@@ -319,9 +319,7 @@ void compression()
         }
         outFile.close();
     }
-
-        cout << "";
-    }
+}
 
 void decompression()
 {
