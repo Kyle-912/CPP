@@ -371,9 +371,8 @@ void decompression()
 
             index += 3;
 
-            string nextBits = compressedInstructions.substr(index, numBits);
+            string data = compressedInstructions.substr(index, numBits);
 
-            // Move the index to the next set of 3 characters
             index += numBits;
         }
 
