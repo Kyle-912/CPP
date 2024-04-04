@@ -318,6 +318,13 @@ void compression()
             // Write the chunk to the file
             outputFile << chunk << endl;
         }
+        outputFile << "xxxx" << endl;
+
+        // Write each dictionary entry to a separate line
+        for (const string &entry : dictionaryEntries)
+        {
+            outputFile << entry << endl;
+        }
         outputFile.close();
     }
 
