@@ -260,7 +260,8 @@ void compression()
         }
     }
 
-    // Original Bina
+    // Original Binaries Handling
+    
 
     // RLE Handling
 
