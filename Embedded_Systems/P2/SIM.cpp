@@ -270,8 +270,9 @@ void compression()
     }
 
     // RLE Handling
-    int consecutiveCount = 1;                    // Initialize consecutive count
     string currentInstruction = instructions[0]; // Initialize current instruction
+    int consecutiveCount = 1;                    // Initialize consecutive count
+
     for (size_t i = 1; i < instructions.size(); ++i)
     {
         if (instructions[i] == currentInstruction)
