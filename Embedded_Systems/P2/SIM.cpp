@@ -473,17 +473,3 @@ int main(int argc, char *argv[])
 
     return 0;
 }
-
-/*
-Heirarchy:
-    RLE - 3
-    Direct Match - 4
-    1-bit mismatch - 9
-    2-bit consecutive mistmatches - 9
-    4-bit consecutive mistmatches - 9
-    bitmask - 13
-    2-bit mismatches anywhere - 14
-
-Compress with lowest indicy dictionary entry
-MSB is location 0
-*/
