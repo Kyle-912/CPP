@@ -156,48 +156,49 @@ void compression()
         {
             const string &dict = dictionaryEntries[j];
 
-            // Iterate through every possible start location for applying the bitmask
             for (size_t start = 0; start <= 28; ++start)
             {
-                // Iterate through every possible 4-bit bitmask
-                for (int mask = 1; mask <= 15; ++mask)
+                for (int mask = 8; mask <= 15; ++mask)
                 {
-                    bool matching = true; // Flag to check if all bits match after XOR
+                    bool matching = true;
 
-                    // Apply the bitmask to the instruction and check if the result matches the dictionary entry
+                    string compressedInstruction = instr;
+
                     for (size_t k = 0; k < 4; ++k)
                     {
-                        if ((instr[start + k] ^ mask) != dict[start + k])
+                        if (((instr[start + k] - '0') ^ ((mask >> (3 - k)) & 1)) != (dict[start + k] - '0'))
                         {
                             matching = false;
-                            break; // Exit loop if any bit doesn't match
+                            break;
+                        }
+                        else
+                        {
+                            compressedInstruction[start + k] = (dict[start + k] - '0') ? '1' : '0';
                         }
                     }
 
-                    if (matching)
+                    if (matching && compressedInstruction == dict)
                     {
-                        // Store the compressed instruction
                         encodedInstruction = "010";
                         encodedInstruction += bitset<5>(start).to_string();
                         encodedInstruction += bitset<4>(mask).to_string();
                         encodedInstruction += bitset<4>(j).to_string();
-                        break; // Exit the loop since the instruction is compressed
+                        break;
                     }
                 }
 
                 if (!encodedInstruction.empty())
                 {
-                    break; // Exit the loop since the instruction is compressed
+                    break;
                 }
             }
 
             if (!encodedInstruction.empty())
             {
-                break; // Exit the loop since the instruction is compressed
+                break;
             }
         }
 
-        // Replace instruction with encoded instruction
         if (!encodedInstruction.empty())
         {
             instructions[i] = encodedInstruction;
