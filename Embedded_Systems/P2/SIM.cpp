@@ -350,6 +350,8 @@ void decompression()
         }
         inFile.close();
 
+        
+
         cout << "";
     }
 }
