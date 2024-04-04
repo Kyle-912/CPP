@@ -275,16 +275,13 @@ void compression()
         string instruction = instructions[i];
         int consecutiveRepetitions = 1;
 
-        // Check for consecutive repetitions
         while (i + consecutiveRepetitions < instructions.size() && instructions[i + consecutiveRepetitions] == instruction && consecutiveRepetitions < 9)
         {
             ++consecutiveRepetitions;
         }
 
-        // Compress instructions using RLE
         if (consecutiveRepetitions > 1)
         {
-            // Add the first instruction to the compressed instructions
             compressedInstructions.push_back(instruction);
 
             // Calculate RLE count (3 bits)
