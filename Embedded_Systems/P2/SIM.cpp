@@ -370,10 +370,10 @@ void decompression()
                 numBits = 4;
 
             index += 3;
-
             string data = compressedInstructions.substr(index, numBits);
-
             index += numBits;
+
+            
         }
 
         cout << "";
