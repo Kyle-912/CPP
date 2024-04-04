@@ -260,8 +260,10 @@ void compression()
         }
     }
 
+    // Original Bina
+
     // RLE Handling
-    
+
 
     cout << "";
 }
