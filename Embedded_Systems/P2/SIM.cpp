@@ -156,21 +156,21 @@ void compression()
         {
             const string &dict = dictionaryEntries[j];
 
-            // Iterate through every possible start location for applying the bitmask
-            for (size_t start = 0; start <= 28; ++start)
+            // Iterate through every possible 4-bit bitmask
+            for (int mask = 8; mask <= 15; ++mask)
             {
-                // Iterate through every possible 4-bit bitmask
-                for (int mask = 1; mask <= 15; ++mask)
-                {
-                    string compressedInstruction = ""; // Reset the compressed instruction for each bitmask
+                string compressedInstruction = ""; // Reset the compressed instruction for each bitmask
 
+                // Iterate through every possible start location for applying the bitmask
+                for (size_t start = 0; start <= 28; ++start)
+                {
                     // Apply the bitmask to the instruction
                     for (size_t k = 0; k < 4; ++k)
                     {
                         if (instr[start + k] != dict[start + k])
                         {
                             // XOR operation to apply the bitmask
-                            compressedInstruction += (mask & (1 << k)) ? '1' : '0';
+                            compressedInstruction += (mask & (1 << (3 - k))) ? '1' : '0';
                         }
                         else
                         {
@@ -190,6 +190,14 @@ void compression()
                         break; // Exit the loop since the instruction is compressed
                     }
                 }
+                if (!encodedInstruction.empty())
+                {
+                    break; // Exit the loop if the instruction is compressed
+                }
+            }
+            if (!encodedInstruction.empty())
+            {
+                break; // Exit the loop if the instruction is compressed
             }
         }
 
