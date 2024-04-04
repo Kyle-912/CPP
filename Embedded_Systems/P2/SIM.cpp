@@ -378,7 +378,7 @@ void decompression()
 
                 if (code == "000")
                 {
-                    
+                    outFile << data << endl;
                 }
                 else if (code == "001")
                 {
