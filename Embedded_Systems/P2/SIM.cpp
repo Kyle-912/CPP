@@ -448,7 +448,8 @@ void decompression()
                 else if (code == "111")
                 {
                     string index = data.substr(0, 4);
-                    string idx = dictionary[stoi(index)];
+                    int i = stoi(index);
+                    string s = dictionary[stoi(index)];
                     outFile << dictionary[stoi(index)] << endl;
                     previousInstruction = dictionary[stoi(index)];
                 }
