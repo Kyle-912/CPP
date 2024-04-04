@@ -141,6 +141,65 @@ void compression()
         }
     }
 
+    // Bitmask Handling
+    for (size_t i = 0; i < instructions.size(); ++i)
+    {
+        const string &instr = instructions[i];
+        string encodedInstruction = "";
+
+        if (instr.size() != 32)
+        {
+            continue;
+        }
+
+        for (size_t j = 0; j < dictionaryEntries.size(); ++j)
+        {
+            const string &dict = dictionaryEntries[j];
+
+            // Iterate through every possible start location for applying the bitmask
+            for (size_t start = 0; start <= 28; ++start)
+            {
+                // Iterate through every possible 4-bit bitmask
+                for (int mask = 1; mask <= 15; ++mask)
+                {
+                    string compressedInstruction = ""; // Reset the compressed instruction for each bitmask
+
+                    // Apply the bitmask to the instruction
+                    for (size_t k = 0; k < 4; ++k)
+                    {
+                        if (instr[start + k] != dict[start + k])
+                        {
+                            // XOR operation to apply the bitmask
+                            compressedInstruction += (mask & (1 << k)) ? '1' : '0';
+                        }
+                        else
+                        {
+                            // If the bits already match, keep them unchanged
+                            compressedInstruction += instr[start + k];
+                        }
+                    }
+
+                    // Check if the compressed instruction matches the dictionary entry
+                    if (compressedInstruction == dict.substr(start, 4))
+                    {
+                        // Store the compressed instruction
+                        encodedInstruction = "010";
+                        encodedInstruction += bitset<5>(start).to_string();
+                        encodedInstruction += bitset<4>(mask).to_string();
+                        encodedInstruction += bitset<4>(j).to_string();
+                        break; // Exit the loop since the instruction is compressed
+                    }
+                }
+            }
+        }
+
+        // Replace instruction with encoded instruction
+        if (!encodedInstruction.empty())
+        {
+            instructions[i] = encodedInstruction;
+        }
+    }
+
     // 2 Mismatches Anywhere Handling
     for (size_t i = 0; i < instructions.size(); ++i)
     {
