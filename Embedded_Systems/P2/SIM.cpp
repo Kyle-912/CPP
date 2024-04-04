@@ -174,6 +174,7 @@ void compression()
                     }
                     else if (mismatchCount > 2)
                     {
+                        mismatchCount == 0;
                         break;
                     }
                 }
