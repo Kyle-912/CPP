@@ -400,6 +400,7 @@ void decompression()
                     int mask = stoi(bitmask, nullptr, 2);
                     modifiedEntry[stoi(location)] ^= mask;
                     outFile << modifiedEntry << endl;
+                    previousInstruction = modifiedEntry;
                 }
 
                 else if (code == "011")
@@ -409,6 +410,8 @@ void decompression()
                     string modifiedEntry = dictionary[stoi(index)];
                     modifiedEntry[stoi(location)] = (modifiedEntry[stoi(location)] == '0') ? '1' : '0';
                     outFile << modifiedEntry << endl;
+                    previousInstruction = modifiedEntry;
+
                 }
                 else if (code == "100")
                 {
@@ -418,6 +421,8 @@ void decompression()
                     modifiedEntry[stoi(location)] = (modifiedEntry[stoi(location)] == '0') ? '1' : '0';
                     modifiedEntry[stoi(location) + 1] = (modifiedEntry[stoi(location) + 1] == '0') ? '1' : '0';
                     outFile << modifiedEntry << endl;
+                    previousInstruction = modifiedEntry;
+
                 }
                 else if (code == "101")
                 {
