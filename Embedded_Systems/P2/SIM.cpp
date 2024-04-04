@@ -387,7 +387,8 @@ void decompression()
                 else if (code == "010")
                 {
                     string startingLocation = data.substr(0,5);
-                    
+                    string bitmask = data.substr(5, 4);
+                    // string index = 
                     cout << "";
                 }
                 else if (code == "011")
