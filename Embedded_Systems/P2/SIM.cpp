@@ -390,9 +390,8 @@ void decompression()
                     string bitmask = data.substr(5, 4);
                     string index = data.substr(9, 4);
                     string modifiedEntry = dictionary[stoi(index)];
-                    int loc = stoi(location);
                     int mask = stoi(bitmask, nullptr, 2);
-                    modifiedEntry[loc] ^= mask;
+                    modifiedEntry[stoi(location)] ^= mask;
                     outFile << modifiedEntry << endl;
                 }
 
