@@ -350,7 +350,41 @@ void decompression()
         }
         inFile.close();
 
-        
+        int index = 0;
+        int len = compressedInstructions.length();
+
+        while (index < len)
+        {
+            // Read the next 3 characters
+            string code = compressedInstructions.substr(index, 3);
+
+            // Determine the number of bits to read next based on the code
+            int numBits = 0;
+            if (code == "000")
+                numBits = 32;
+            else if (code == "001")
+                numBits = 3;
+            else if (code == "010")
+                numBits = 13;
+            else if (code == "011" || code == "100" || code == "101")
+                numBits = 9;
+            else if (code == "110")
+                numBits = 14;
+            else if (code == "111")
+                numBits = 4;
+
+            // Move the index to read the next set of bits
+            index += 3;
+
+            // Read the next set of bits
+            string nextBits = compressedInstructions.substr(index, numBits);
+
+            // Process the nextBits (this could be output or stored in a data structure, etc.)
+            cout << nextBits << " ";
+
+            // Move the index to the next set of 3 characters
+            index += numBits;
+        }
 
         cout << "";
     }
