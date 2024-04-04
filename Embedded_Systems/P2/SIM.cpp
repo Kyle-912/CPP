@@ -414,6 +414,7 @@ void decompression()
                 else if (code == "111")
                 {
                     string index = data.substr(0, 4);
+                    outFile << dictionary[stoi(index)];
                 }
             }
             outFile.close();
