@@ -41,5 +41,8 @@
         "**/ieee": false,
         "**/work": false
     },
-    "explorerExclude.backup": {}
+    "explorerExclude.backup": {},
+    "cSpell.ignoreWords": [
+        "dout"
+    ]
 }
