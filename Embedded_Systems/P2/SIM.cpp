@@ -454,8 +454,6 @@ void decompression()
             }
             outFile.close();
         }
-
-        cout << "";
     }
 }
 
