@@ -385,6 +385,11 @@ void decompression()
                 else if (code == "001")
                 {
                     string RLE = data.substr(0, 3);
+                    int numRepeats = stoi(RLE, nullptr, 2) + 1;
+                    for (int i = 0; i < numRepeats; ++i)
+                    {
+                        outFile << previousInstruction << endl;
+                    }
                 }
                 else if (code == "010")
                 {
