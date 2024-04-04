@@ -394,7 +394,7 @@ void decompression()
                 {
                     string location = data.substr(0, 5);
                     string index = data.substr(5, 4);
-                    
+                    dictionary[stoi(index)][stoi(location)] = (dictionary[stoi(index)][stoi(location)] == '0') ? '1' : '0';
                 }
                 else if (code == "100")
                 {
