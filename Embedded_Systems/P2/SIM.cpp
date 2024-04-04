@@ -380,6 +380,7 @@ void decompression()
                 if (code == "000")
                 {
                     outFile << data << endl;
+                    previousInstruction = data;
                 }
                 else if (code == "001")
                 {
