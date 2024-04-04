@@ -400,11 +400,17 @@ void decompression()
                 {
                     string location = data.substr(0, 5);
                     string index = data.substr(5, 4);
+                    dictionary[stoi(index)][stoi(location)] = (dictionary[stoi(index)][stoi(location)] == '0') ? '1' : '0';
+                    dictionary[stoi(index)][stoi(location) + 1] = (dictionary[stoi(index)][stoi(location) + 1] == '0') ? '1' : '0';
                 }
                 else if (code == "101")
                 {
                     string location = data.substr(0, 5);
                     string index = data.substr(5, 4);
+                    dictionary[stoi(index)][stoi(location)] = (dictionary[stoi(index)][stoi(location)] == '0') ? '1' : '0';
+                    dictionary[stoi(index)][stoi(location) + 1] = (dictionary[stoi(index)][stoi(location) + 1] == '0') ? '1' : '0';
+                    dictionary[stoi(index)][stoi(location) + 2] = (dictionary[stoi(index)][stoi(location) + 2] == '0') ? '1' : '0';
+                    dictionary[stoi(index)][stoi(location) + 3] = (dictionary[stoi(index)][stoi(location) + 3] == '0') ? '1' : '0';
                 }
                 else if (code == "110")
                 {
