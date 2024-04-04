@@ -350,7 +350,7 @@ void decompression()
         }
         inFile.close();
 
-        ofstream outFile("cout.txt");
+        ofstream outFile("dout.txt");
         if (outFile.is_open())
         {
             int index = 0;
