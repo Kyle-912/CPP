@@ -43,6 +43,8 @@
     },
     "explorerExclude.backup": {},
     "cSpell.ignoreWords": [
-        "dout"
+        "Vigenère",
+        "dout",
+        "mykey"
     ]
 }
