@@ -7,7 +7,7 @@
             "request": "launch",
             "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
             "args": [
-                "1"
+                // Command line arguments here
             ],
             "cwd": "${fileDirname}",
             "setupCommands": [

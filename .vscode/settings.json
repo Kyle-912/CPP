@@ -41,5 +41,12 @@
         "**/ieee": false,
         "**/work": false
     },
-    "explorerExclude.backup": {}
+    "explorerExclude.backup": {},
+    "cSpell.ignoreWords": [
+        "Thomisticus",
+        "Unsourced",
+        "Vigenère",
+        "dout",
+        "mykey"
+    ]
 }
